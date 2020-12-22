@@ -1,16 +1,33 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { AppContext, defaultObject } from "./AppContext.js";
 
 import Login from "./pages/Login";
-//import Home from "./pages/Home";
+import Home from "./pages/Home";
 
-class App extends Component {
-  state = {};
+class App extends PureComponent {
+  state = {
+    isUserLogged: defaultObject.isUserLogged,
+  };
+
   render() {
     return (
-      //<Home/>
-      <Login />
+      <>
+        <AppContext.Provider
+          value={{
+            isUserLogged: this.state.isUserLogged,
+            toggleLoggedState: this.handleToggleStateIsLogged,
+          }}
+        >
+          {!this.state.isUserLogged ? <Login /> : <Home />}
+        </AppContext.Provider>
+      </>
     );
   }
+
+  handleToggleStateIsLogged = () =>
+    this.setState((prevState) => ({
+      isUserLogged: !prevState.isUserLogged,
+    }));
 }
 
 export default App;

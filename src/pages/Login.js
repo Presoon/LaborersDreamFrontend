@@ -1,7 +1,13 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { AppContext } from "../AppContext";
 
-class Login extends Component {
+class Login extends PureComponent {
+  static contextType = AppContext;
+
   render() {
+    const { isUserLogged, toggleLoggedState } = this.context;
+    const userLoggedInfo = isUserLogged ? "ZALOGOWANY" : "NIEZALOGOWANY";
+
     return (
       <>
         <div className="container">
@@ -19,6 +25,8 @@ class Login extends Component {
                       <div className="p-5">
                         <div className="text-center">
                           <h4 className="text-dark mb-4">
+                            {userLoggedInfo}
+                            <br />
                             Logowanie do panelu!
                           </h4>
                         </div>
@@ -59,6 +67,7 @@ class Login extends Component {
                           <button
                             className="btn btn-primary btn-block text-white btn-user"
                             type="submit"
+                            onClick={toggleLoggedState}
                           >
                             Zaloguj
                           </button>
