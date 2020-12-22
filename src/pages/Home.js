@@ -1,13 +1,11 @@
 import React, { PureComponent } from "react";
-import Header from "../components/Header";
-import Content from "../components/Content";
+import MainLayout from "../components/MainLayout";
 
 class Home extends PureComponent {
   render() {
     return (
       <>
-        <Header />
-        <Content />
+        <MainLayout />
       </>
     );
   }

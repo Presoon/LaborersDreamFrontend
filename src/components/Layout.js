@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navtop from "../components/Navtop";
-import Footer from "../components/Footer";
+import Navtop from "./layout/Navtop";
+import Footer from "./layout/Footer";
 
-class Content extends Component {
+class Layout extends Component {
   render() {
     return (
       <>
@@ -20,4 +20,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default Layout;
