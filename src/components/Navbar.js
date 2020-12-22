@@ -8,7 +8,7 @@ class Navbar extends PureComponent {
           <div className="container-fluid d-flex flex-column p-0">
             <a
               className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-              href="#"
+              href="https://www.google.pl"
             >
               <div className="sidebar-brand-icon rotate-n-15">
                 <img className="logoimg" src="assets/img/logo.png" alt="sd" />

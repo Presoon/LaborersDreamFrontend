@@ -33,7 +33,7 @@ class Navtop extends PureComponent {
                   class="dropdown-toggle nav-link"
                   data-toggle="dropdown"
                   aria-expanded="false"
-                  href="#"
+                  href="https://www.google.pl"
                 >
                   <i class="fas fa-search"></i>
                 </a>
@@ -64,7 +64,7 @@ class Navtop extends PureComponent {
                     class="dropdown-toggle nav-link"
                     data-toggle="dropdown"
                     aria-expanded="false"
-                    href="#"
+                    href="https://www.google.pl"
                   >
                     <span class="badge badge-danger badge-counter">3+</span>
                     <i class="fas fa-bell fa-fw"></i>
@@ -74,7 +74,10 @@ class Navtop extends PureComponent {
                     role="menu"
                   >
                     <h6 class="dropdown-header">alerts center</h6>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="mr-3">
                         <div class="bg-primary icon-circle">
                           <i class="fas fa-file-alt text-white"></i>
@@ -87,7 +90,10 @@ class Navtop extends PureComponent {
                         <p>A new monthly report is ready to download!</p>
                       </div>
                     </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="mr-3">
                         <div class="bg-success icon-circle">
                           <i class="fas fa-donate text-white"></i>
@@ -100,7 +106,10 @@ class Navtop extends PureComponent {
                         <p>$290.29 has been deposited into your account!</p>
                       </div>
                     </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="mr-3">
                         <div class="bg-warning icon-circle">
                           <i class="fas fa-exclamation-triangle text-white"></i>
@@ -118,7 +127,7 @@ class Navtop extends PureComponent {
                     </a>
                     <a
                       class="text-center dropdown-item small text-gray-500"
-                      href="#"
+                      href="https://www.google.pl"
                     >
                       Show All Alerts
                     </a>
@@ -131,7 +140,7 @@ class Navtop extends PureComponent {
                     class="dropdown-toggle nav-link"
                     data-toggle="dropdown"
                     aria-expanded="false"
-                    href="#"
+                    href="https://www.google.pl"
                   >
                     <i class="fas fa-envelope fa-fw"></i>
                     <span class="badge badge-danger badge-counter">7</span>
@@ -141,11 +150,15 @@ class Navtop extends PureComponent {
                     role="menu"
                   >
                     <h6 class="dropdown-header">alerts center</h6>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="dropdown-list-image mr-3">
                         <img
                           class="rounded-circle"
                           src="assets/img/avatars/avatar4.jpeg"
+                          alt="Something"
                         />
                         <div class="bg-success status-indicator"></div>
                       </div>
@@ -161,11 +174,15 @@ class Navtop extends PureComponent {
                         </p>
                       </div>
                     </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="dropdown-list-image mr-3">
                         <img
                           class="rounded-circle"
                           src="assets/img/avatars/avatar2.jpeg"
+                          alt="Something"
                         />
                         <div class="status-indicator"></div>
                       </div>
@@ -178,11 +195,15 @@ class Navtop extends PureComponent {
                         <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
                       </div>
                     </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="dropdown-list-image mr-3">
                         <img
                           class="rounded-circle"
                           src="assets/img/avatars/avatar3.jpeg"
+                          alt="Something"
                         />
                         <div class="bg-warning status-indicator"></div>
                       </div>
@@ -198,11 +219,15 @@ class Navtop extends PureComponent {
                         </p>
                       </div>
                     </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
+                    <a
+                      class="d-flex align-items-center dropdown-item"
+                      href="https://www.google.pl"
+                    >
                       <div class="dropdown-list-image mr-3">
                         <img
                           class="rounded-circle"
                           src="assets/img/avatars/avatar5.jpeg"
+                          alt="Something"
                         />
                         <div class="bg-success status-indicator"></div>
                       </div>
@@ -221,7 +246,7 @@ class Navtop extends PureComponent {
                     </a>
                     <a
                       class="text-center dropdown-item small text-gray-500"
-                      href="#"
+                      href="https://www.google.pl"
                     >
                       Show All Alerts
                     </a>
@@ -239,7 +264,7 @@ class Navtop extends PureComponent {
                     class="dropdown-toggle nav-link"
                     data-toggle="dropdown"
                     aria-expanded="false"
-                    href="#"
+                    href="https://www.google.pl"
                   >
                     <span class="d-none d-lg-inline mr-2 text-gray-600 small">
                       Valerie Luna
@@ -247,26 +272,43 @@ class Navtop extends PureComponent {
                     <img
                       class="border rounded-circle img-profile"
                       src="assets/img/avatars/avatar1.jpeg"
+                      alt="Something"
                     />
                   </a>
                   <div
                     class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
                     role="menu"
                   >
-                    <a class="dropdown-item" role="presentation" href="#">
+                    <a
+                      class="dropdown-item"
+                      role="presentation"
+                      href="https://www.google.pl"
+                    >
                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       &nbsp;Profile
                     </a>
-                    <a class="dropdown-item" role="presentation" href="#">
+                    <a
+                      class="dropdown-item"
+                      role="presentation"
+                      href="https://www.google.pl"
+                    >
                       <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                       &nbsp;Settings
                     </a>
-                    <a class="dropdown-item" role="presentation" href="#">
+                    <a
+                      class="dropdown-item"
+                      role="presentation"
+                      href="https://www.google.pl"
+                    >
                       <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                       &nbsp;Activity log
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" role="presentation" href="#">
+                    <a
+                      class="dropdown-item"
+                      role="presentation"
+                      href="https://www.google.pl"
+                    >
                       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                       &nbsp;Logout
                     </a>
