@@ -1,0 +1,35 @@
+body {
+  background-color: transparent;
+}
+
+.logoimg {
+  width: 40%;
+}
+
+.blackback {
+  background-color: rgb(49, 83, 181);
+}
+
+.fslarge {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-family: "Nunito";
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: xx-large;
+  margin-top: 40px;
+  margin-right: 150px;
+  display: block;
+}
+
+.category {
+  text-align: center;
+  border: 1px solid rgb(216, 218, 221);
+  padding: 1rem;
+}
+
+.category span {
+  color: rgb(157, 145, 145);
+  font-weight: 700;
+}
