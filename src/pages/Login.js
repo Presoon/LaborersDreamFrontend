@@ -1,13 +1,10 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
 
-class Login extends PureComponent {
-  static contextType = AppContext;
-
+class Login extends Component {
   render() {
-    const { isUserLogged, toggleLoggedState } = this.context;
-    const userLoggedInfo = isUserLogged ? "ZALOGOWANY" : "NIEZALOGOWANY";
-
+    const { Consumer } = AppContext;
     return (
       <>
         <div className="container">
@@ -25,7 +22,6 @@ class Login extends PureComponent {
                       <div className="p-5">
                         <div className="text-center">
                           <h4 className="text-dark mb-4">
-                            {userLoggedInfo}
                             <br />
                             Logowanie do panelu!
                           </h4>
@@ -57,20 +53,25 @@ class Login extends PureComponent {
                                 />
                                 <label
                                   className="form-check-label custom-control-label"
-                                  for="formCheck-1"
+                                  htmlFor="formCheck-1"
                                 >
                                   Zapamiętaj
                                 </label>
                               </div>
                             </div>
                           </div>
-                          <button
-                            className="btn btn-primary btn-block text-white btn-user"
-                            type="submit"
-                            onClick={toggleLoggedState}
-                          >
-                            Zaloguj
-                          </button>
+                          <Consumer>
+                            {({ toggleLoggedState }) => (
+                              <Link to="/">
+                                <button
+                                  className="btn btn-primary btn-block text-white btn-user"
+                                  onClick={toggleLoggedState}
+                                >
+                                  Zaloguj
+                                </button>
+                              </Link>
+                            )}
+                          </Consumer>
                           <hr />
                         </form>
                         <div className="text-center">

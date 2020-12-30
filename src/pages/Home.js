@@ -1,13 +1,8 @@
-import React, { PureComponent } from "react";
-import MainLayout from "../components/MainLayout";
+import React from "react";
 
-class Home extends PureComponent {
+class Home extends React.Component {
   render() {
-    return (
-      <>
-        <MainLayout />
-      </>
-    );
+    return <h1>Home Page</h1>;
   }
 }
 

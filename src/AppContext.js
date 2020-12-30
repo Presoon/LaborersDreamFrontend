@@ -1,8 +1,11 @@
 import { createContext } from "react";
 
-export const defaultObject = {
+export const defaultContext = {
+  userLogged: {
+    login: "",
+  },
   isUserLogged: false,
   toggleLoggedState: () => {},
 };
 
-export const AppContext = createContext(defaultObject);
+export const AppContext = createContext(defaultContext);

@@ -1,7 +1,10 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { AppContext } from "../../AppContext";
 
-class Navbar extends PureComponent {
+class Navbar extends Component {
   render() {
+    const { Consumer } = AppContext;
     return (
       <>
         <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
@@ -20,35 +23,43 @@ class Navbar extends PureComponent {
             <hr className="sidebar-divider my-0" />
             <ul className="nav navbar-nav text-light" id="accordionSidebar">
               <li className="nav-item" role="presentation">
-                <a className="nav-link" href="home.html">
+                <NavLink className="nav-link" exact to="/">
                   <i className="fas fa-home" />
                   <span>Strona główna</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item" role="presentation">
-                <a className="nav-link" href="profile.html">
+                <NavLink className="nav-link" to="/tickets">
                   <i className="fas fa-user" />
                   <span>System zgłoszeń</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item" role="presentation">
-                <a className="nav-link" href="table.html">
+                <NavLink className="nav-link" to="/inventory">
                   <i className="fas fa-shopping-cart" />
                   <span>Inwentarz</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item" role="presentation">
-                <a className="nav-link" href="login.html">
+                <NavLink className="nav-link" to="/check">
                   <i className="far fa-user-circle" />
                   <span>Sprawdź sprzęt</span>
-                </a>
+                </NavLink>
               </li>
-              <li className="nav-item" role="presentation">
-                <a className="nav-link" href="register.html">
-                  <i className="fas fa-user-circle" />
-                  <span>Wyloguj</span>
-                </a>
-              </li>
+              <Consumer>
+                {({ toggleLoggedState }) => (
+                  <li className="nav-item" role="presentation">
+                    <NavLink
+                      className="nav-link"
+                      to="/login"
+                      onClick={toggleLoggedState}
+                    >
+                      <i className="fas fa-user-circle" />
+                      <span>Wyloguj</span>
+                    </NavLink>
+                  </li>
+                )}
+              </Consumer>
             </ul>
             <div className="text-center d-none d-md-inline">
               <button
