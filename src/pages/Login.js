@@ -1,10 +1,84 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { AppContext } from "../AppContext";
+import AuthService from "../services/auth.service";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+const required = (value) => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        To pole jest wymagane!
+      </div>
+    );
+  }
+};
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+
+    this.state = {
+      username: "",
+      password: "",
+      loading: false,
+      message: "",
+    };
+  }
+
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
+
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+
+    this.setState({
+      message: "",
+      loading: true,
+    });
+
+    this.form.validateAll();
+
+    if (this.checkBtn.context._errors.length === 0) {
+      AuthService.login(this.state.username, this.state.password).then(
+        () => {
+          this.props.history.push("/home");
+          window.location.reload();
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+
+          this.setState({
+            loading: false,
+            message: resMessage,
+          });
+        }
+      );
+    } else {
+      this.setState({
+        loading: false,
+      });
+    }
+  }
+
   render() {
-    const { Consumer } = AppContext;
     return (
       <>
         <div className="container">
@@ -26,41 +100,60 @@ class Login extends Component {
                             Logowanie do panelu!
                           </h4>
                         </div>
-                        <form className="user">
+                        <Form
+                          className="user"
+                          onSubmit={this.handleLogin}
+                          ref={(c) => {
+                            this.form = c;
+                          }}
+                        >
                           <div className="form-group">
-                            <input
+                            <Input
+                              type="text"
                               className="form-control form-control-user"
-                              type="email"
-                              placeholder="Wprowadź adres email..."
-                              name="email"
+                              name="username"
+                              placeholder="Podaj login..."
+                              value={this.state.username}
+                              onChange={this.onChangeUsername}
+                              validations={[required]}
                             />
                           </div>
                           <div className="form-group">
-                            <input
-                              className="form-control form-control-user"
+                            <Input
                               type="password"
-                              placeholder="...oraz hasło"
+                              className="form-control form-control-user"
                               name="password"
+                              placeholder="...oraz hasło"
+                              value={this.state.password}
+                              onChange={this.onChangePassword}
+                              validations={[required]}
                             />
                           </div>
                           <div className="form-group">
-                            <div className="custom-control custom-checkbox small">
-                              <div className="form-check">
-                                <input
-                                  className="form-check-input custom-control-input"
-                                  type="checkbox"
-                                  id="formCheck-1"
-                                />
-                                <label
-                                  className="form-check-label custom-control-label"
-                                  htmlFor="formCheck-1"
-                                >
-                                  Zapamiętaj
-                                </label>
+                            <button
+                              className="btn btn-primary btn-block text-white btn-user"
+                              disabled={this.state.loading}
+                            >
+                              {this.state.loading && (
+                                <span className="spinner-border spinner-border-sm"></span>
+                              )}
+                              <span>Login</span>
+                            </button>
+                          </div>
+                          {this.state.message && (
+                            <div className="form-group">
+                              <div className="alert alert-danger" role="alert">
+                                {this.state.message}
                               </div>
                             </div>
-                          </div>
-                          <Consumer>
+                          )}
+                          <CheckButton
+                            style={{ display: "none" }}
+                            ref={(c) => {
+                              this.checkBtn = c;
+                            }}
+                          />
+                          {/* <Consumer>
                             {({ toggleLoggedState }) => (
                               <Link to="/">
                                 <button
@@ -71,9 +164,9 @@ class Login extends Component {
                                 </button>
                               </Link>
                             )}
-                          </Consumer>
+                          </Consumer> */}
                           <hr />
-                        </form>
+                        </Form>
                         <div className="text-center">
                           <a className="small" href="forgot-password.html">
                             Zapomniałeś hasła?

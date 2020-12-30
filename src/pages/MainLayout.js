@@ -18,7 +18,7 @@ class MainLayout extends Component {
             <div id="content">
               <Navtop />
               <div className="container-fluid">
-                <Route path="/" exact component={Home} />
+                <Route path="/home" exact component={Home} />
                 <Route path="/tickets" component={Tickets} />
                 <Route path="/inventory" component={Inventory} />
                 <Route path="/check" component={Check} />

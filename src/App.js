@@ -14,7 +14,7 @@ class App extends Component {
 
     this.state = {
       isUserLogged: false,
-      currentUser: null,
+      currentUser: { login: "Admin" },
       showAdminBoard: false,
       toggleLoggedState: this.handleToggleStateIsLogged.bind(this),
     };
@@ -22,11 +22,11 @@ class App extends Component {
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
-
+    console.log(user);
     if (user) {
       this.setState({
         currentUser: user,
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        //showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
   }
@@ -42,15 +42,15 @@ class App extends Component {
   }
 
   render = () => {
+    var userr = AuthService.getCurrentUser();
     const { Provider } = AppContext;
     return (
       <>
-        {console.log(this.state)}
         <Provider value={this.state}>
           <Router>
             <Switch>
-              {this.state.isUserLogged ? (
-                <Route to="/" exact component={MainLayout} />
+              {userr ? (
+                <Route to="/" component={MainLayout} />
               ) : (
                 <Route to="/" exact component={Login} />
               )}

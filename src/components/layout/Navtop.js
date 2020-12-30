@@ -1,11 +1,12 @@
 import React, { PureComponent } from "react";
 import { AppContext } from "../../AppContext";
+import AuthService from "../../services/auth.service";
 
 class Navtop extends PureComponent {
   static contextType = AppContext;
 
   render() {
-    const { currentUser } = this.context;
+    const user = AuthService.getCurrentUser();
     return (
       <>
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
@@ -73,8 +74,18 @@ class Navtop extends PureComponent {
                     href="https://www.google.pl"
                   >
                     <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                      Zalogowany jako: {currentUser.login}
+                      Zalogowany użytkownik:{" "}
+                      <strong>{user.name + " " + user.surname}</strong>
+                      {user.role === 2 ? (
+                        <>
+                          {" "}
+                          jako<strong> ADMINISTRATOR</strong>
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </span>
+
                     <img
                       className="border rounded-circle img-profile"
                       src="assets/img/avatars/avatar1.jpeg"

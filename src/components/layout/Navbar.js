@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { AppContext } from "../../AppContext";
+import AuthService from "../../services/auth.service";
 
 class Navbar extends Component {
   render() {
-    const { Consumer } = AppContext;
     return (
       <>
         <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
@@ -46,20 +45,20 @@ class Navbar extends Component {
                   <span>Sprawdź sprzęt</span>
                 </NavLink>
               </li>
-              <Consumer>
-                {({ toggleLoggedState }) => (
-                  <li className="nav-item" role="presentation">
-                    <NavLink
-                      className="nav-link"
-                      to="/login"
-                      onClick={toggleLoggedState}
-                    >
-                      <i className="fas fa-user-circle" />
-                      <span>Wyloguj</span>
-                    </NavLink>
-                  </li>
-                )}
-              </Consumer>
+
+              <li className="nav-item" role="presentation">
+                <NavLink
+                  className="nav-link"
+                  to="/login"
+                  onClick={() => {
+                    AuthService.logout();
+                    window.location.reload();
+                  }}
+                >
+                  <i className="fas fa-user-circle" />
+                  <span>Wyloguj</span>
+                </NavLink>
+              </li>
             </ul>
             <div className="text-center d-none d-md-inline">
               <button
