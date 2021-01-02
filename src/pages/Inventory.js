@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import UserService from "../services/user.service"
 
 //const URL = 'http://localhost:5000/resources/all'
@@ -47,7 +46,7 @@ const Table = () => {
         <>
           <div id="top-bar">
             <h1 id='title'>Inwentarz</h1>
-            <button id="buttonAdd" class="ml-auto">Dodaj</button>
+            <button id="buttonAdd" className="ml-auto">Dodaj</button>
           </div>
           <br></br>
           <table id='resource'>
