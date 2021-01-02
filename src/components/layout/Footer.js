@@ -7,7 +7,10 @@ class Footer extends Component {
         <footer className="bg-white sticky-footer">
           <div className="container my-auto">
             <div className="text-center my-auto copyright">
-              <span>Copyright © FastSell - K.Szpak 2020</span>
+              <span>
+                Copyright © Laborer's Dream | 2020 <br />
+                K.Szpak & P. Magdziarz & A. Dzierżawa & A. Giza
+              </span>
             </div>
           </div>
         </footer>
