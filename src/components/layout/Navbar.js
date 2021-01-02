@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import AuthService from "../../services/auth.service";
 
 class Navbar extends Component {
@@ -8,21 +8,24 @@ class Navbar extends Component {
       <>
         <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
           <div className="container-fluid d-flex flex-column p-0">
-            <a
+            <Link
               className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-              href="https://www.google.pl"
+              to="/home"
             >
               <div className="sidebar-brand-icon rotate-n-15">
                 <img className="logoimg" src="assets/img/logo.png" alt="sd" />
               </div>
               <div className="sidebar-brand-text mx-3">
-                <span>Marzenie Laboranta</span>
+                <span>
+                  Marzenie <br />
+                  Laboranta
+                </span>
               </div>
-            </a>
+            </Link>
             <hr className="sidebar-divider my-0" />
             <ul className="nav navbar-nav text-light" id="accordionSidebar">
               <li className="nav-item" role="presentation">
-                <NavLink className="nav-link" exact to="/">
+                <NavLink className="nav-link" exact to="/home">
                   <i className="fas fa-home" />
                   <span>Strona główna</span>
                 </NavLink>
