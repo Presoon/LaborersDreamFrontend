@@ -26,6 +26,11 @@ class UserService {
   getQRCodeInfo(serialnb) {
     return axios.get(API_URL + "resources/qrdata/" + serialnb, {});
   }
+
+  getAllResources()
+  {
+    return axios.get(API_URL + "resources/all", { headers: authHeader() });
+  }
 }
 
 export default new UserService();
