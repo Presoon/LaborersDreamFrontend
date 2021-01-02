@@ -1,11 +1,13 @@
 import React from "react";
 
 class Inventory extends React.Component {
-  state = {
+  state = 
+  {
     inventory: "",
   };
 
-  render() {
+  render() 
+  {
     const { inventory } = this.state;
     return (
       <>
