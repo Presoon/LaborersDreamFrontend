@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { AppContext } from "../../AppContext";
 import AuthService from "../../services/auth.service";
+import { Link } from "react-router-dom";
 
 class Navtop extends PureComponent {
   static contextType = AppContext;
@@ -102,7 +103,7 @@ class Navtop extends PureComponent {
                       href="https://www.google.pl"
                     >
                       <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      &nbsp;Profile
+                      &nbsp;Profil
                     </a>
                     <a
                       className="dropdown-item"
@@ -110,7 +111,7 @@ class Navtop extends PureComponent {
                       href="https://www.google.pl"
                     >
                       <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                      &nbsp;Settings
+                      &nbsp;Ustawienia
                     </a>
                     <a
                       className="dropdown-item"
@@ -118,17 +119,21 @@ class Navtop extends PureComponent {
                       href="https://www.google.pl"
                     >
                       <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                      &nbsp;Activity log
+                      &nbsp;Historia
                     </a>
                     <div className="dropdown-divider"></div>
-                    <a
+                    <Link
                       className="dropdown-item"
                       role="presentation"
-                      href="https://www.google.pl"
+                      to="/login"
+                      onClick={() => {
+                        AuthService.logout();
+                        window.location.reload();
+                      }}
                     >
                       <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                      &nbsp;Logout
-                    </a>
+                      &nbsp;Wyloguj
+                    </Link>
                   </div>
                 </div>
               </li>
