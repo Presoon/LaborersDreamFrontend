@@ -90,6 +90,11 @@ class Login extends Component {
                     <div className="col-lg-6 d-none d-lg-flex blackback">
                       <div className="flex-grow-1 bg-login-image">
                         <span className="fslarge">Marzenie laboranta</span>
+                        <img
+                          className="logoimg"
+                          src="assets/img/logo.png"
+                          alt="sd"
+                        />
                       </div>
                     </div>
                     <div className="col-lg-6">

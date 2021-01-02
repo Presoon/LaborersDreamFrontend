@@ -12,7 +12,7 @@ class Navbar extends Component {
               className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
               to="/home"
             >
-              <div className="sidebar-brand-icon rotate-n-15">
+              <div className="sidebar-brand-icon ">
                 <img className="logoimg" src="assets/img/logo.png" alt="sd" />
               </div>
               <div className="sidebar-brand-text mx-3">
