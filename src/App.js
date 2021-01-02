@@ -32,14 +32,14 @@ class App extends Component {
   }
 
   render = () => {
-    var userr = AuthService.getCurrentUser();
+    var user = AuthService.getCurrentUser();
     const { Provider } = AppContext;
     return (
       <>
         <Provider value={this.state}>
           <Router>
             <Switch>
-              {userr ? (
+              {user ? (
                 <Route to="/" component={MainLayout} />
               ) : (
                 <Route to="/" exact component={Login} />
