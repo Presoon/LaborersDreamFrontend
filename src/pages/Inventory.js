@@ -34,7 +34,7 @@ const Table = () => {
                     <td>{dateOfPurchase}</td>
                     <td>{localization}</td>
                     <td className='operation'>
-                      <button id="buttonDelete">Usuń</button>
+                      <button id="buttonScrap">Zezłomuj</button>
                       <button id="buttonEdit">Edytuj</button>
                     </td>
                 </tr>
