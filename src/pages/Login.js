@@ -158,18 +158,6 @@ class Login extends Component {
                               this.checkBtn = c;
                             }}
                           />
-                          {/* <Consumer>
-                            {({ toggleLoggedState }) => (
-                              <Link to="/">
-                                <button
-                                  className="btn btn-primary btn-block text-white btn-user"
-                                  onClick={toggleLoggedState}
-                                >
-                                  Zaloguj
-                                </button>
-                              </Link>
-                            )}
-                          </Consumer> */}
                           <hr />
                         </Form>
                         <div className="text-center">

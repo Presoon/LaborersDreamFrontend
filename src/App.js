@@ -13,10 +13,8 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      isUserLogged: false,
-      currentUser: { login: "Admin" },
+      currentUser: { login: null },
       showAdminBoard: false,
-      toggleLoggedState: this.handleToggleStateIsLogged.bind(this),
     };
   }
 
@@ -31,12 +29,6 @@ class App extends Component {
 
   logOut() {
     AuthService.logout();
-  }
-
-  handleToggleStateIsLogged() {
-    this.setState((prevState) => ({
-      isUserLogged: !prevState.isUserLogged,
-    }));
   }
 
   render = () => {
