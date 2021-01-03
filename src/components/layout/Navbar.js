@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import AuthService from "../../services/auth.service";
 
 class Navbar extends Component {
+  user = AuthService.getCurrentUser();
   render() {
     return (
       <>
@@ -36,18 +37,22 @@ class Navbar extends Component {
                   <span>Utwórz zgłoszenie</span>
                 </NavLink>
               </li>
-              <li className="nav-item" role="presentation">
-                <NavLink className="nav-link" to="/tickets">
-                  <i className="fas fa-user" />
-                  <span>System zgłoszeń</span>
-                </NavLink>
-              </li>
-              <li className="nav-item" role="presentation">
-                <NavLink className="nav-link" to="/inventory">
-                  <i className="fas fa-shopping-cart" />
-                  <span>Inwentarz</span>
-                </NavLink>
-              </li>
+              {this.user.role === 2 ? (
+                <li className="nav-item" role="presentation">
+                  <NavLink className="nav-link" to="/tickets">
+                    <i className="fas fa-user" />
+                    <span>System zgłoszeń</span>
+                  </NavLink>
+                </li>
+              ) : null}
+              {this.user.role === 2 ? (
+                <li className="nav-item" role="presentation">
+                  <NavLink className="nav-link" to="/inventory">
+                    <i className="fas fa-shopping-cart" />
+                    <span>Inwentarz</span>
+                  </NavLink>
+                </li>
+              ) : null}
               <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/check">
                   <i className="far fa-user-circle" />
