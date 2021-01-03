@@ -31,6 +31,12 @@ class Navbar extends Component {
                 </NavLink>
               </li>
               <li className="nav-item" role="presentation">
+                <NavLink className="nav-link" to="/newticket">
+                  <i className="fas fa-bug" />
+                  <span>Utwórz zgłoszenie</span>
+                </NavLink>
+              </li>
+              <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/tickets">
                   <i className="fas fa-user" />
                   <span>System zgłoszeń</span>
