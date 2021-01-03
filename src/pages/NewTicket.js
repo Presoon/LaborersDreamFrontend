@@ -22,7 +22,7 @@ class NewTicket extends React.Component {
       reporterId: user.id,
 
       loading: false,
-      message: "",
+      message: null,
     };
   }
 
@@ -41,7 +41,7 @@ class NewTicket extends React.Component {
     e.preventDefault();
 
     this.setState({
-      message: "",
+      message: null,
       loading: true,
     });
 
@@ -58,6 +58,7 @@ class NewTicket extends React.Component {
         () => {
           this.setState({
             loading: false,
+            message: "Twoje zgłoszenie zostało wysłane!",
           });
         },
         (error) => {
