@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../services/APIcontext";
+import UserService from "../services/APIcontext";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -35,7 +35,7 @@ class Check extends React.Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      API.getQRCodeInfo(this.state.seriesnumber).then(
+      UserService.getQRCodeInfo(this.state.seriesnumber).then(
         (response) => {
           this.setState({
             displayinfo: response.data,

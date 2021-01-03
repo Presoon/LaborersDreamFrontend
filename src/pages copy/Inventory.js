@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API from "../services/APIcontext";
+import UserService from "../services/APIcontext";
 
 //const URL = 'http://localhost:5000/resources/all'
 
@@ -11,7 +11,7 @@ const Table = () => {
   }, []);
 
   const getData = async () => {
-    const response = await API.getAllResources();
+    const response = await UserService.getAllResources();
     setResources(response.data);
   };
 
