@@ -20,6 +20,18 @@ class API {
   getAllResources() {
     return axios.get(API_URL + "resources/all", { headers: authHeader() });
   }
+
+  getAllUsers() {
+    return axios.get(API_URL + "users/all", { headers: authHeader() });
+  }
+  createNewUser(user) {
+    return axios.post(API_URL + "users/add", user, { headers: authHeader() });
+  }
+  deleteUser(iduser) {
+    return axios.delete(API_URL + "users/delete/" + iduser, {
+      headers: authHeader(),
+    });
+  }
 }
 
 export default new API();

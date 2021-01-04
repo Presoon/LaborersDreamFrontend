@@ -59,7 +59,22 @@ class Navbar extends Component {
                   <span>Sprawdź sprzęt</span>
                 </NavLink>
               </li>
-
+              {this.user.role === 2 ? (
+                <li className="nav-item" role="presentation">
+                  <NavLink className="nav-link" to="/users">
+                    <i className="fas fa-users" />
+                    <span>Użytkownicy</span>
+                  </NavLink>
+                </li>
+              ) : null}
+              {this.user.role === 2 ? (
+                <li className="nav-item" role="presentation">
+                  <NavLink className="nav-link" to="/localizations">
+                    <i className="fas fa-globe" />
+                    <span>Lokalizacje</span>
+                  </NavLink>
+                </li>
+              ) : null}
               <li className="nav-item" role="presentation">
                 <NavLink
                   className="nav-link"

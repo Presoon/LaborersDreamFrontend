@@ -8,6 +8,8 @@ import Tickets from "../pages/Tickets";
 import NewTicket from "../pages/NewTicket";
 import Inventory from "../pages/Inventory";
 import Check from "../pages/Check";
+import Localizations from "../pages/Localizations";
+import UsersLayout from "./UsersLayout";
 
 class MainLayout extends Component {
   render() {
@@ -24,6 +26,8 @@ class MainLayout extends Component {
                 <Route path="/tickets" component={Tickets} />
                 <Route path="/inventory" component={Inventory} />
                 <Route path="/check" component={Check} />
+                <Route path="/users" component={UsersLayout} />
+                <Route path="/localizations" component={Localizations} />
               </div>
             </div>
             <Footer />
