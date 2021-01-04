@@ -4,10 +4,23 @@ import AuthService from "../../services/auth.service";
 
 class Navbar extends Component {
   user = AuthService.getCurrentUser();
+
+  toggleNavBarCollapsed = () => {
+    const el = document.getElementById("navCollapsed");
+    if (!el.classList.contains("toggled")) {
+      el.classList.add("toggled");
+    } else {
+      el.classList.remove("toggled");
+    }
+  };
+
   render() {
     return (
       <>
-        <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav
+          id="navCollapsed"
+          className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+        >
           <div className="container-fluid d-flex flex-column p-0">
             <Link
               className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
@@ -93,6 +106,7 @@ class Navbar extends Component {
                 className="btn rounded-circle border-0"
                 id="sidebarToggle"
                 type="button"
+                onClick={this.toggleNavBarCollapsed}
               />
             </div>
           </div>
