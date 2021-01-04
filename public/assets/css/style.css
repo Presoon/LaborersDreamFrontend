@@ -43,20 +43,36 @@ body {
   font-weight: 700;
 }
 
-#resource {
-  width: 100%;
-}
-
-#resource td,
-#resource th {
-  border: 1px solid rgb(145, 145, 145);
-  padding: 12px;
-}
-
-#resource th {
-  padding: 10px;
+.inventory {
+  border-radius: 20px;
   text-align: center;
+}
+
+.inventory td,
+.inventory th {
+  padding: 12px;
+  vertical-align: middle !important;
+}
+
+.inventory tbody tr td:nth-child(2) {
+  font-weight: bold;
+  color: #4e73df;
+}
+
+.inventory thead th {
   background-color: #4e73df;
+}
+
+.inventory thead th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.inventory th:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.inventory th {
+  text-align: center;
   color: white;
 }
 
