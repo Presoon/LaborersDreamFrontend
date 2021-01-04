@@ -71,12 +71,19 @@ const Table = () => {
         </button>
       </div>
       <br></br>
-      <table id="resource">
-        <thead>
-          <tr>{renderHeader()}</tr>
-        </thead>
-        <tbody>{renderBody()}</tbody>
-      </table>
+      <div
+        className="table-responsive table mt-2"
+        id="dataTable"
+        role="grid"
+        aria-describedby="dataTable_info"
+      >
+        <table id="dataTable" className="table my-0 inventory">
+          <thead>
+            <tr>{renderHeader()}</tr>
+          </thead>
+          <tbody>{renderBody()}</tbody>
+        </table>
+      </div>
     </>
   );
 };
