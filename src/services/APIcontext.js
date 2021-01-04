@@ -21,6 +21,15 @@ class API {
     return axios.get(API_URL + "resources/all", { headers: authHeader() });
   }
 
+  addNewResource(resource) {
+    return axios.post(API_URL + "resources/add/", resource, { headers: authHeader() });
+  }
+
+  deleteResource(id) {
+    return axios.delete(API_URL + "resources/delete/", id, { headers: authHeader() });
+  }
+  
+
   getAllUsers() {
     return axios.get(API_URL + "users/all", { headers: authHeader() });
   }

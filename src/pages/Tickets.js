@@ -1,4 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
+
+class Tickets extends React.Component {
+  render() {
+    return <h1>Tickets tutaj będzie</h1>;
+  }
+}
+
+export default Tickets;
+
+
+/*import React, { Component } from "react";
 import API from "../services/APIcontext";
 
 //const URL = 'http://localhost:5000/resources/all'
@@ -95,4 +106,4 @@ class Tickets extends Component {
   }
 }
 
-export default Tickets;
+export default Tickets;*/

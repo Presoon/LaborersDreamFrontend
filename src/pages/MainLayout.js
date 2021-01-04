@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Tickets from "../pages/Tickets";
 import NewTicket from "../pages/NewTicket";
 import Inventory from "../pages/Inventory";
+import InventoryAdd from "../pages/InventoryAdd";
 import Check from "../pages/Check";
 import Localizations from "../pages/Localizations";
 import UsersLayout from "./UsersLayout";
@@ -24,7 +25,8 @@ class MainLayout extends Component {
                 <Route path="/home" exact component={Home} />
                 <Route path="/newticket" component={NewTicket} />
                 <Route path="/tickets" component={Tickets} />
-                <Route path="/inventory" component={Inventory} />
+                <Route path="/inventory" exact component={Inventory} />
+                <Route path="/inventory/add" component={InventoryAdd} />
                 <Route path="/check" component={Check} />
                 <Route path="/users" component={UsersLayout} />
                 <Route path="/localizations" component={Localizations} />
