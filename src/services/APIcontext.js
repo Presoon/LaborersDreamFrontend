@@ -10,6 +10,9 @@ class API {
     });
   }
 
+  getAllTickets() {
+    return axios.get(API_URL + "failures/all", { headers: authHeader() });
+  }
   getQRCodeInfo(serialnb) {
     return axios.get(API_URL + "resources/qrdata/" + serialnb, {});
   }
