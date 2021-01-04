@@ -27,9 +27,7 @@ class API {
     });
   }
   deleteResource(id) {
-    return axios.delete(API_URL + "resources/delete/", id, {
-      headers: authHeader(),
-    });
+    return axios.delete(API_URL + "resources/delete/", id, {headers: authHeader(),});
   }
 
   //users

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import API from "../services/APIcontext";
+import API from "../../services/APIcontext";
 
 const Table = () => {
   const [resources, setResources] = useState([]);
@@ -43,7 +43,7 @@ const Table = () => {
           localization,
           isScrapped,
         }) => {
-          if(isScrapped===false)
+          if(isScrapped==true)
           return (
             <tr key={id}>
               <td>{id}</td>
@@ -53,8 +53,7 @@ const Table = () => {
               <td>{dateOfPurchase}</td>
               <td>{localization}</td>
               <td className="operation">
-                <button id="buttonScrap">Zezłomuj</button>
-                <button id="buttonEdit">Edytuj</button>
+                <button id="buttonScrap">Usuń</button>
               </td>
             </tr>
           );
@@ -66,24 +65,19 @@ const Table = () => {
   return (
     <>
       <div id="top-bar">
-        <h1 id="title">Inwentarz</h1>
+        <h1 id="title">Zezłomowane</h1>
       </div>
       <div id="buttons">
-      <Link to="/inventory/add">
+      <Link to="/inventory">
         <button id="buttonAdd" className="ml-auto mt-5">
-          Dodaj
-        </button>
-      </Link>
-      <Link to="/inventory/scrapped">
-        <button id="buttonScrapped" className="ml-auto mt-5">
-          Zezłomowane
+          Wróć
         </button>
       </Link>
       </div>
       <br />
       <div
         className="table-responsive table mt-2"
-        id="dataTable"
+        id="dataTableScrapped"
         role="grid"
         aria-describedby="dataTable_info"
       >

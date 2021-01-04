@@ -117,3 +117,19 @@ body {
   cursor: pointer;
   background-color: #45ac45;
 }
+
+#buttonScrapped {
+  margin: 5px;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 140%;
+  padding: 8px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f44336;
+}
+
+#buttonsArea {
+  display: flex;
+}

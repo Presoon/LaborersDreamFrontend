@@ -118,6 +118,11 @@ class InventoryAdd extends React.Component {
     return (
       <>
         <h1>Dodawanie nowego sprzętu</h1>
+        <Link to="/inventory">
+          <button id="buttonAdd" className="ml-auto mt-5">
+            Wróć
+          </button>
+        </Link>
         <div className="container mt-5">
           <div className="row">
             <div className="col-sm-6 p-4">
@@ -227,12 +232,6 @@ class InventoryAdd extends React.Component {
                     )}
                     <span>Dodaj sprzęt</span>
                   </button>
-                  <label> </label>
-                  <Link to="/inventory">
-                    <button className="btn btn-primary btn-block text-white btn-user">
-                      <span>Cofnij</span>
-                    </button>
-                  </Link>
                 </div>
                 {this.state.message && (
                   <div className="form-group">
