@@ -4,6 +4,8 @@ import { AppContext } from "./AppContext.js";
 import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
 import AuthService from "./services/auth.service";
+import "./styles/style.css";
+import "./styles/bootstrap.min.css";
 
 class App extends Component {
   constructor(props) {
