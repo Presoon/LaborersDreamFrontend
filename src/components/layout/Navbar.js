@@ -37,46 +37,42 @@ class Navbar extends Component {
                   <span>Utwórz zgłoszenie</span>
                 </NavLink>
               </li>
-              {this.user.role === 2 ? (
-                <li className="nav-item" role="presentation">
-                  <NavLink className="nav-link" to="/tickets">
-                    <i className="fas fa-user" style={{ minWidth: 20 }} />
-                    <span>System zgłoszeń</span>
-                  </NavLink>
-                </li>
-              ) : null}
-              {this.user.role === 2 ? (
-                <li className="nav-item" role="presentation">
-                  <NavLink className="nav-link" to="/inventory">
-                    <i
-                      className="fas fa-shopping-cart"
-                      style={{ minWidth: 20 }}
-                    />
-                    <span>Inwentarz</span>
-                  </NavLink>
-                </li>
-              ) : null}
               <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/check">
-                  <i className="far fa-user-circle" style={{ minWidth: 20 }} />
+                  <i
+                    className="fas fa-question-circle"
+                    style={{ minWidth: 20 }}
+                  />
                   <span>Sprawdź sprzęt</span>
                 </NavLink>
               </li>
               {this.user.role === 2 ? (
-                <li className="nav-item" role="presentation">
-                  <NavLink className="nav-link" to="/users">
-                    <i className="fas fa-users" style={{ minWidth: 20 }} />
-                    <span>Użytkownicy</span>
-                  </NavLink>
-                </li>
-              ) : null}
-              {this.user.role === 2 ? (
-                <li className="nav-item" role="presentation">
-                  <NavLink className="nav-link" to="/localizations">
-                    <i className="fas fa-globe" style={{ minWidth: 20 }} />
-                    <span>Lokalizacje</span>
-                  </NavLink>
-                </li>
+                <>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/tickets">
+                      <i className="fas fa-book" style={{ minWidth: 20 }} />
+                      <span>System zgłoszeń</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/inventory">
+                      <i className="fas fa-cubes" style={{ minWidth: 20 }} />
+                      <span>Inwentarz</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/users">
+                      <i className="fas fa-users" style={{ minWidth: 20 }} />
+                      <span>Użytkownicy</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/localizations">
+                      <i className="fas fa-globe" style={{ minWidth: 20 }} />
+                      <span>Lokalizacje</span>
+                    </NavLink>
+                  </li>
+                </>
               ) : null}
               <li className="nav-item" role="presentation">
                 <NavLink
