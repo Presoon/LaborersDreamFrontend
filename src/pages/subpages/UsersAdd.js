@@ -4,8 +4,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import Select from "react-validation/build/select";
-import required from "../components/required";
-import API from "../services/APIcontext";
+import required from "../../components/required";
+import API from "../../services/APIcontext";
 
 class UsersAdd extends React.Component {
   constructor(props) {

@@ -1,8 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import API from "../services/APIcontext";
-import UsersAdd from "../components/UsersAdd";
-import Users from "../components/UsersAll";
+import UsersAdd from "./subpages/UsersAdd";
+import Users from "./subpages/UsersAll";
 
 class UsersLayout extends React.Component {
   constructor(props) {

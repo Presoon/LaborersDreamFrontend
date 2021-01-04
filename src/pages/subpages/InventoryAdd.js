@@ -2,9 +2,9 @@ import React from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import required from "../components/required";
-import API from "../services/APIcontext";
-import AuthService from "../services/auth.service";
+import required from "../../components/required";
+import API from "../../services/APIcontext";
+import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 
 class InventoryAdd extends React.Component {
@@ -78,11 +78,11 @@ class InventoryAdd extends React.Component {
     this.form.validateAll();
 
     const resource = {
-        Specification: this.state.name,
-        InstalationKey: this.state.instalationKey,
-        DateOfPurchase: this.state.dateOfPurchase,
-        LocalizationId: parseInt(this.state.localization),
-        Type: parseInt(this.state.type),
+      Specification: this.state.name,
+      InstalationKey: this.state.instalationKey,
+      DateOfPurchase: this.state.dateOfPurchase,
+      LocalizationId: parseInt(this.state.localization),
+      Type: parseInt(this.state.type),
     };
 
     if (this.checkBtn.context._errors.length === 0) {
@@ -199,11 +199,10 @@ class InventoryAdd extends React.Component {
                     placeholder="Podaj typ..."
                     value={this.state.type}
                     onChange={this.onChangeType}
-                    validations={[required]} 
-                    
+                    validations={[required]}
                   />
                 </div>
-                
+
                 <div className="form-group">
                   <label>Identyfikator dodającego</label>
                   <Input
@@ -216,9 +215,9 @@ class InventoryAdd extends React.Component {
                     validations={[required]}
                   />
                 </div>
-                
+
                 <div className="form-group">
-                    <label> </label>
+                  <label> </label>
                   <button
                     className="btn btn-primary btn-block text-white btn-user"
                     disabled={this.state.loading}
@@ -230,9 +229,9 @@ class InventoryAdd extends React.Component {
                   </button>
                   <label> </label>
                   <Link to="/inventory">
-                  <button className="btn btn-primary btn-block text-white btn-user">
-                    <span>Cofnij</span>
-                  </button>
+                    <button className="btn btn-primary btn-block text-white btn-user">
+                      <span>Cofnij</span>
+                    </button>
                   </Link>
                 </div>
                 {this.state.message && (

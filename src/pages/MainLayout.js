@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import Tickets from "../pages/Tickets";
 import NewTicket from "../pages/NewTicket";
 import Inventory from "../pages/Inventory";
-import InventoryAdd from "../pages/InventoryAdd";
+import InventoryAdd from "./subpages/InventoryAdd";
 import Check from "../pages/Check";
 import Localizations from "../pages/Localizations";
 import UsersLayout from "./UsersLayout";

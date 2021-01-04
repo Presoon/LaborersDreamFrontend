@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import API from "../services/APIcontext";
 
-//const URL = 'http://localhost:5000/resources/all'
-
 const Table = () => {
   const [resources, setResources] = useState([]);
 
@@ -67,13 +65,13 @@ const Table = () => {
     <>
       <div id="top-bar">
         <h1 id="title">Inwentarz</h1>
-        <Link className="ml-auto" to="/inventory/add">
-        <button id="buttonAdd">
+      </div>
+      <Link to="/inventory/add">
+        <button id="buttonAdd" className="ml-auto mt-5">
           Dodaj
         </button>
-        </Link>
-      </div>
-      <br></br>
+      </Link>
+      <br />
       <div
         className="table-responsive table mt-2"
         id="dataTable"
