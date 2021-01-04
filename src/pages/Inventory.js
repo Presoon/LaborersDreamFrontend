@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import API from "../services/APIcontext";
 
 //const URL = 'http://localhost:5000/resources/all'
@@ -66,9 +67,11 @@ const Table = () => {
     <>
       <div id="top-bar">
         <h1 id="title">Inwentarz</h1>
-        <button id="buttonAdd" className="ml-auto">
+        <Link className="ml-auto" to="/inventory/add">
+        <button id="buttonAdd">
           Dodaj
         </button>
+        </Link>
       </div>
       <br></br>
       <div

@@ -20,6 +20,15 @@ class API {
   getAllResources() {
     return axios.get(API_URL + "resources/all", { headers: authHeader() });
   }
+
+  addNewResource(resource) {
+    return axios.post(API_URL + "resources/add/", resource, { headers: authHeader() });
+  }
+
+  deleteResource(id) {
+    return axios.delete(API_URL + "resources/delete/", id, { headers: authHeader() });
+  }
+  
 }
 
 export default new API();
