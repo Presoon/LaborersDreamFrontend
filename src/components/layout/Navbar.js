@@ -27,20 +27,20 @@ class Navbar extends Component {
             <ul className="nav navbar-nav text-light" id="accordionSidebar">
               <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" exact to="/home">
-                  <i className="fas fa-home" />
+                  <i className="fas fa-home" style={{ minWidth: 20 }} />
                   <span>Strona główna</span>
                 </NavLink>
               </li>
               <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/newticket">
-                  <i className="fas fa-bug" />
+                  <i className="fas fa-bug" style={{ minWidth: 20 }} />
                   <span>Utwórz zgłoszenie</span>
                 </NavLink>
               </li>
               {this.user.role === 2 ? (
                 <li className="nav-item" role="presentation">
                   <NavLink className="nav-link" to="/tickets">
-                    <i className="fas fa-user" />
+                    <i className="fas fa-user" style={{ minWidth: 20 }} />
                     <span>System zgłoszeń</span>
                   </NavLink>
                 </li>
@@ -48,21 +48,24 @@ class Navbar extends Component {
               {this.user.role === 2 ? (
                 <li className="nav-item" role="presentation">
                   <NavLink className="nav-link" to="/inventory">
-                    <i className="fas fa-shopping-cart" />
+                    <i
+                      className="fas fa-shopping-cart"
+                      style={{ minWidth: 20 }}
+                    />
                     <span>Inwentarz</span>
                   </NavLink>
                 </li>
               ) : null}
               <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/check">
-                  <i className="far fa-user-circle" />
+                  <i className="far fa-user-circle" style={{ minWidth: 20 }} />
                   <span>Sprawdź sprzęt</span>
                 </NavLink>
               </li>
               {this.user.role === 2 ? (
                 <li className="nav-item" role="presentation">
                   <NavLink className="nav-link" to="/users">
-                    <i className="fas fa-users" />
+                    <i className="fas fa-users" style={{ minWidth: 20 }} />
                     <span>Użytkownicy</span>
                   </NavLink>
                 </li>
@@ -70,7 +73,7 @@ class Navbar extends Component {
               {this.user.role === 2 ? (
                 <li className="nav-item" role="presentation">
                   <NavLink className="nav-link" to="/localizations">
-                    <i className="fas fa-globe" />
+                    <i className="fas fa-globe" style={{ minWidth: 20 }} />
                     <span>Lokalizacje</span>
                   </NavLink>
                 </li>
@@ -84,7 +87,7 @@ class Navbar extends Component {
                     window.location.reload();
                   }}
                 >
-                  <i className="fas fa-user-circle" />
+                  <i className="fas fa-user-circle" style={{ minWidth: 20 }} />
                   <span>Wyloguj</span>
                 </NavLink>
               </li>

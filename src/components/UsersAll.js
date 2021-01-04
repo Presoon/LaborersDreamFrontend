@@ -28,14 +28,12 @@ class Users extends React.Component {
 
   async deleteUser(idUser) {
     await API.deleteUser(idUser).then((res) => {
-      console.log(res.data);
       this.setState({ message: "Pomyślnie usunięto użytkownika" });
       this.getUsers();
     });
   }
 
   render() {
-    console.log(this.state.allUsers);
     const { allUsers } = this.state;
     return (
       <>
