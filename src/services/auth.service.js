@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://62.171.190.232:5000/users/";
+const API_URL = "http://api.seev.pro:5000/users/";
 
 class AuthService {
   login(login, password) {
@@ -11,7 +11,7 @@ class AuthService {
       })
       .then((response) => {
         if (response.data.token) {
-          localStorage.setItem("user", JSON.stringify(response.data));
+          sessionStorage.setItem("user", JSON.stringify(response.data));
         }
 
         return response.data;
@@ -19,7 +19,7 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
   }
 
   register(username, email, password) {
@@ -31,7 +31,7 @@ class AuthService {
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));
+    return JSON.parse(sessionStorage.getItem("user"));
   }
 }
 
