@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AppContext } from "./AppContext.js";
+import "./styles/style.css";
+import "./styles/bootstrap.min.css";
 
 import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
