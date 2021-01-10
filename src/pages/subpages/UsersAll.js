@@ -61,7 +61,7 @@ class Users extends React.Component {
                 <th>LOGIN</th>
                 <th>IMIĘ</th>
                 <th>NAZWISKO</th>
-                <th>ROLE</th>
+                <th>ROLA</th>
                 <th>AKCJE</th>
               </tr>
             </thead>
@@ -78,8 +78,8 @@ class Users extends React.Component {
                         {user.role === 2
                           ? "Administrator"
                           : user.role === 0
-                          ? "Lab Technik"
-                          : "Użytkownik"}
+                          ? "Technik"
+                          : "Serwisant"}
                       </td>
                       <td className="operation">
                         <button

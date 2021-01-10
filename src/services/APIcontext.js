@@ -26,8 +26,13 @@ class API {
       headers: authHeader(),
     });
   }
+  updateResource(id, resource) {
+    return axios.put(API_URL + "resources/update/" + id, resource, {
+      headers: authHeader(),
+    });
+  }
   deleteResource(id) {
-    return axios.delete(API_URL + "resources/delete/", id, {headers: authHeader(),});
+    return axios.delete(API_URL + "resources/delete/" + id, {headers: authHeader(),});
   }
 
   //users
