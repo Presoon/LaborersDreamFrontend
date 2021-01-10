@@ -86,12 +86,16 @@ class Navtop extends PureComponent {
                         ""
                       )}
                     </span>
-
-                    <img
+                    {user.role === 2 ? 
+                    (<i className="fas fa-user-cog fa-2x text-gray-600"/>) 
+                    : (user.role === 1 ? 
+                    (<i className="fas fa-tools fa-2x text-gray-600"/>)
+                    :(<i className="fas fa-flask fa-2x text-gray-600"/>))}
+                    {/* <img
                       className="border rounded-circle img-profile"
                       src="assets/img/avatars/avatar1.jpeg"
                       alt="Something"
-                    />
+                    /> */}
                   </a>
                   <div
                     className="dropdown-menu shadow dropdown-menu-right animated--grow-in"
