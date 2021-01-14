@@ -36,7 +36,7 @@ class Home extends React.Component {
           <h1 className="ml-auto">{this.state.time}</h1>
         </div>
         <div className="container">
-          <div className="row mt-3">
+          <div className="row mt-5">
             <div className="col text-center">
               <NavLink className="nav-link d-flex flex-column border border-primary rounded" to="/newticket">
                 <i className="fas fa-bug fa-7x"/>
@@ -56,7 +56,7 @@ class Home extends React.Component {
                     </NavLink>
             </div>
           </div>
-          <div className="row mt-3">
+          <div className="row mt-4">
             <div className="col text-center">
             <NavLink className="nav-link d-flex flex-column border border-primary rounded" to="/check">
                   <i className="fas fa-question-circle fa-7x" />
@@ -76,7 +76,7 @@ class Home extends React.Component {
                     </NavLink>
             </div>
             </div>
-            <div className="row mt-3">
+            <div className="row mt-4">
               <div className="col text-center">
                 <NavLink className="nav-link d-flex flex-column border border-primary rounded"
                   to="/login"
