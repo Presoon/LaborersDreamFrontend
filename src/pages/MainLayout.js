@@ -12,6 +12,7 @@ import InventoryScrapped from "./subpages/InventoryScrapped";
 import Check from "../pages/Check";
 import Localizations from "../pages/Localizations";
 import UsersLayout from "./UsersLayout";
+import InventoryEdit from "./subpages/InventoryEdit";
 
 class MainLayout extends Component {
   render() {
@@ -28,6 +29,7 @@ class MainLayout extends Component {
                 <Route path="/tickets" component={Tickets} />
                 <Route path="/inventory" exact component={Inventory} />
                 <Route path="/inventory/add" component={InventoryAdd} />
+                <Route path="/inventory/edit" component={InventoryEdit} />
                 <Route path="/inventory/scrapped" component={InventoryScrapped} />
                 <Route path="/check" component={Check} />
                 <Route path="/users" component={UsersLayout} />
