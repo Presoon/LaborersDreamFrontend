@@ -1,12 +1,15 @@
 import React from "react";
 import API from "../services/APIcontext";
 import { Link } from "react-router-dom";
+import InventoryEdit from "./subpages/InventoryEdit";
 
 class Resources extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      editVisibility: false,
+      editResource: null,
       allResources: null,
       reload: null,
       message: null,
@@ -33,23 +36,29 @@ class Resources extends React.Component {
     });
   }
 
+  editResource(resource) {
+    this.setState({
+      editVisibility: true,
+      editResource: resource,
+    });
+  }
+
   render() {
-    const { allResources } = this.state;
+    const { allResources, editVisibility, editResource } = this.state;
+    console.log(allResources, editVisibility);
     return (
       <>
         <h1 id="title">Inwentarz</h1>
-        <div id="buttons">
+        <InventoryEdit
+          visible={editVisibility}
+          resource={editResource}
+          reloadResources={this.getResources.bind(this)}
+        />
         <Link to="/inventory/add">
           <button id="buttonAdd" className="ml-auto mt-5">
             Dodaj
          </button>
         </Link>
-        {/* <Link to="/inventory/scrapped">
-          <button id="buttonScrapped" className="ml-auto mt-5">
-            Zezłomowane
-          </button>
-        </Link> */}
-        </div>
         {this.state.message && (
           <div className="alert alert-danger" role="alert">
             {this.state.message}
@@ -86,9 +95,7 @@ class Resources extends React.Component {
                       <td>{resource.localization}</td>
                       <td className="operation">
                         <button id="buttonScrap" onClick={this.deleteResource.bind(this, resource.id)}>Usuń</button>
-                        <Link to="/inventory/edit/">
-                          <button id="buttonEdit">Edytuj</button>
-                        </Link>
+                        <button id="buttonEdit" onClick={this.editResource.bind(this, resource)}>Edytuj</button>
                       </td>
                     </tr>
                   );
