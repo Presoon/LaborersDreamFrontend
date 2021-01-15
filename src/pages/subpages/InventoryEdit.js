@@ -51,7 +51,6 @@ class InventoryEdit extends React.Component {
       instalationKey: e.target.value,
     });
   }
-
   onChangeDateOfPurchase(e) {
     this.setState({
       dateOfPurchase: e.target.value,
