@@ -8,8 +8,18 @@ class API {
   getAllTickets() {
     return axios.get(API_URL + "failures/all", { headers: authHeader() });
   }
+  getAllWaitingTickets() {
+    return axios.get(API_URL + "failures/all-waiting", {
+      headers: authHeader(),
+    });
+  }
   createNewTicket(ticket) {
     return axios.post(API_URL + "failures/add", ticket, {
+      headers: authHeader(),
+    });
+  }
+  updateTicketStatus(id, ticket) {
+    return axios.put(API_URL + "failures/update-status/" + id, ticket, {
       headers: authHeader(),
     });
   }

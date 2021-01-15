@@ -1,93 +1,55 @@
-import React from "react";
-
-class Tickets extends React.Component {
-  render() {
-    return <h1>Tickets tutaj będzie</h1>;
-  }
-}
-
-export default Tickets;
-
-
-/*import React, { Component } from "react";
+import React, { Component } from "react";
 import API from "../services/APIcontext";
-
-//const URL = 'http://localhost:5000/resources/all'
+import { Link } from "react-router-dom";
 
 class Tickets extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      resources: { students: {} },
+      allTickets: null,
+      reload: null,
+      message: null,
     };
   }
 
-  componentDidMount() {
-    API.getAllTickets().then((res) => {
+  async getTickets() {
+    await API.getAllWaitingTickets().then((res) => {
+      const users = res.data;
       this.setState({
-        resources: res,
+        allTickets: users,
       });
     });
   }
 
-  renderHeader = () => {
-    let headerElement = [
-      "id",
-      "nazwa",
-      "numer seryjny",
-      "klucz instalacji",
-      "data zakupu",
-      "lokalizacja",
-      "działanie",
-    ];
+  async componentDidMount() {
+    this.getTickets();
+    console.log(this.state.allTickets);
+  }
 
-    return headerElement.map((key, index) => {
-      return <th key={index}>{key.toUpperCase()}</th>;
+  async deleteUser(idUser) {
+    await API.deleteUser(idUser).then((res) => {
+      this.setState({ message: "Pomyślnie usunięto użytkownika" });
+      this.getUsers();
     });
-  };
+  }
 
-  renderBody = () => {
-    const res = this.state.resources;
-    return (
-      res &&
-      res.map(
-        ({
-          id,
-          specification,
-          seriesNumber,
-          instalationKey,
-          dateOfPurchase,
-          localization,
-        }) => {
-          return (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{specification}</td>
-              <td>{seriesNumber}</td>
-              <td>{instalationKey}</td>
-              <td>{dateOfPurchase}</td>
-              <td>{localization}</td>
-              <td className="operation">
-                <button id="buttonScrap">Zezłomuj</button>
-                <button id="buttonEdit">Edytuj</button>
-              </td>
-            </tr>
-          );
-        }
-      )
-    );
-  };
   render() {
+    console.log(this.state.allTickets);
+    const { allUsers } = this.state;
     return (
       <>
-        <div id="top-bar">
-          <h1 id="title">Inwentarz</h1>
-          <button id="buttonAdd" className="ml-auto">
+        <h1>Użytkownicy</h1>
+        <Link to="tickets/add">
+          <button id="buttonAdd" className="ml-auto mt-5">
             Dodaj
           </button>
-        </div>
-        <br></br>
+        </Link>
+        {this.state.message && (
+          <div className="alert alert-danger" role="alert">
+            {this.state.message}
+          </div>
+        )}
         <div
           className="table-responsive table mt-2"
           id="dataTable"
@@ -96,9 +58,49 @@ class Tickets extends Component {
         >
           <table id="dataTable" className="table my-0 inventory">
             <thead>
-              <tr>{this.renderHeader()}</tr>
+              <tr>
+                <th>ID</th>
+                <th>LOGIN</th>
+                <th>IMIĘ</th>
+                <th>NAZWISKO</th>
+                <th>ROLA</th>
+                <th>AKCJE</th>
+              </tr>
             </thead>
-            <tbody>{this.renderBody()}</tbody>
+            <tbody>
+              {allUsers &&
+                allUsers.map((user) => {
+                  return (
+                    <tr key={user.id}>
+                      <td>{user.id}</td>
+                      <td>{user.login}</td>
+                      <td>{user.name}</td>
+                      <td>{user.surname}</td>
+                      <td>
+                        {user.role === 2
+                          ? "Administrator"
+                          : user.role === 0
+                          ? "Technik"
+                          : "Serwisant"}
+                      </td>
+                      <td className="operation">
+                        <button
+                          onClick={this.deleteUser.bind(this, user.id)}
+                          id="buttonScrap"
+                        >
+                          Usuń
+                        </button>
+                        <button
+                          id="buttonEdit"
+                          onClick={this.editUser.bind(this, user)}
+                        >
+                          Edytuj
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
         </div>
       </>
@@ -106,4 +108,4 @@ class Tickets extends Component {
   }
 }
 
-export default Tickets;*/
+export default Tickets;
