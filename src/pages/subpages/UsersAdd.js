@@ -184,7 +184,7 @@ class UsersAdd extends React.Component {
                   >
                     <option>Administrator</option>
                     <option>Lab Technik</option>
-                    <option>Użytkownik</option>
+                    <option>Serwisant</option>
                   </Select>
                 </div>
                 <div className="form-group">

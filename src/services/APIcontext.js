@@ -32,7 +32,9 @@ class API {
     });
   }
   deleteResource(id) {
-    return axios.delete(API_URL + "resources/delete/" + id, {headers: authHeader(),});
+    return axios.delete(API_URL + "resources/delete/" + id, {
+      headers: authHeader(),
+    });
   }
 
   //users
@@ -44,6 +46,11 @@ class API {
   }
   deleteUser(iduser) {
     return axios.delete(API_URL + "users/delete/" + iduser, {
+      headers: authHeader(),
+    });
+  }
+  updateUser(userId, user) {
+    return axios.put(API_URL + "users/update/" + userId, user, {
       headers: authHeader(),
     });
   }

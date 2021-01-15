@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../services/APIcontext";
 import { Link } from "react-router-dom";
+import UsersEdit from "./UsersEdit";
 
 class Users extends React.Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class Users extends React.Component {
       allUsers: null,
       reload: null,
       message: null,
+      editVisibility: false,
+      editUser: null,
     };
   }
 
@@ -33,11 +36,23 @@ class Users extends React.Component {
     });
   }
 
+  editUser(user) {
+    console.log("Zmieniono state");
+    this.setState({
+      editVisibility: true,
+      editUser: user,
+    });
+  }
   render() {
-    const { allUsers } = this.state;
+    const { allUsers, editVisibility, editUser } = this.state;
     return (
       <>
         <h1>Użytkownicy</h1>
+        <UsersEdit
+          visible={editVisibility}
+          user={editUser}
+          reloadUsers={this.getUsers.bind(this)}
+        />
         <Link to="users/add">
           <button id="buttonAdd" className="ml-auto mt-5">
             Dodaj
@@ -88,7 +103,12 @@ class Users extends React.Component {
                         >
                           Usuń
                         </button>
-                        <button id="buttonEdit">Edytuj</button>
+                        <button
+                          id="buttonEdit"
+                          onClick={this.editUser.bind(this, user)}
+                        >
+                          Edytuj
+                        </button>
                       </td>
                     </tr>
                   );
