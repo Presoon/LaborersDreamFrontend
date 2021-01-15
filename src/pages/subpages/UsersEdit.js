@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../services/APIcontext";
-import { Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";

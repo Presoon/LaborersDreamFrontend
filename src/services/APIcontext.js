@@ -54,6 +54,16 @@ class API {
       headers: authHeader(),
     });
   }
+
+  //localizations
+  getAllLocalizations() {
+    return axios.get(API_URL + "localizations/all", { headers: authHeader() });
+  }
+  addNewLocalization(localization) {
+    return axios.post(API_URL + "localizations/add", localization, {
+      headers: authHeader(),
+    });
+  }
 }
 
 export default new API();

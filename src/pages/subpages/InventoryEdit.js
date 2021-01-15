@@ -1,12 +1,10 @@
 import React from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
 import required from "../../components/required";
 import API from "../../services/APIcontext";
 import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
-import Resources from "../Inventory";
 
 class InventoryEdit extends React.Component {
   constructor(props) {

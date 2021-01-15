@@ -43,20 +43,23 @@ const Table = () => {
           localization,
           isScrapped,
         }) => {
-          if(isScrapped==true)
-          return (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{specification}</td>
-              <td>{seriesNumber}</td>
-              <td>{instalationKey}</td>
-              <td>{dateOfPurchase}</td>
-              <td>{localization}</td>
-              <td className="operation">
-                <button id="buttonScrap">Usuń</button>
-              </td>
-            </tr>
-          );
+          if (isScrapped === true)
+            return (
+              <tr key={id}>
+                <td>{id}</td>
+                <td>{specification}</td>
+                <td>{seriesNumber}</td>
+                <td>{instalationKey}</td>
+                <td>{dateOfPurchase}</td>
+                <td>{localization}</td>
+                <td className="operation">
+                  <button id="buttonScrap">Usuń</button>
+                </td>
+              </tr>
+            );
+          else {
+            return null;
+          }
         }
       )
     );
@@ -68,11 +71,11 @@ const Table = () => {
         <h1 id="title">Zezłomowane</h1>
       </div>
       <div id="buttons">
-      <Link to="/inventory">
-        <button id="buttonAdd" className="ml-auto mt-5">
-          Wróć
-        </button>
-      </Link>
+        <Link to="/inventory">
+          <button id="buttonAdd" className="ml-auto mt-5">
+            Wróć
+          </button>
+        </Link>
       </div>
       <br />
       <div
