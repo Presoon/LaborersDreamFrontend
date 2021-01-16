@@ -59,7 +59,7 @@ class Localizations extends React.Component {
           this.setState({
             loading: false,
             message: "Lokalizacja została dodana!",
-            localizationName: null,
+            localizationName: "Lokalizacja",
           });
           this.getLocalizations();
         },

@@ -1,50 +1,76 @@
 import React, { Component } from "react";
 import API from "../services/APIcontext";
-import { Link } from "react-router-dom";
 
 class Tickets extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      allTickets: null,
+      tickets: null,
+      tab: null,
       reload: null,
       message: null,
     };
   }
 
-  async getTickets() {
+  async getAllWaitingTickets() {
     await API.getAllWaitingTickets().then((res) => {
       const users = res.data;
       this.setState({
-        allTickets: users,
+        tickets: users,
+        tab: "Oczekujące Zgłoszenia",
+      });
+    });
+  }
+  async getAllTickets() {
+    await API.getAllTickets().then((res) => {
+      const users = res.data;
+      this.setState({
+        tickets: users,
+        tab: "Wszystkie Zgłoszenia",
       });
     });
   }
 
-  async componentDidMount() {
-    this.getTickets();
-    console.log(this.state.allTickets);
+  async changeTicketStatus(status, ticketId) {
+    await API.updateTicketStatus(ticketId, { RepairStatus: status }).then(
+      (res) => {
+        this.setState({ message: "Edytowano status zgłoszenia!" });
+      }
+    );
   }
 
-  async deleteUser(idUser) {
-    await API.deleteUser(idUser).then((res) => {
-      this.setState({ message: "Pomyślnie usunięto użytkownika" });
-      this.getUsers();
+  async componentDidMount() {
+    this.getAllTickets();
+    console.log(this.state.tickets);
+  }
+
+  async deleteTicket(idTicket) {
+    await API.deleteTicket(idTicket).then((res) => {
+      this.setState({ message: "Pomyślnie usunięto ticket" });
+      this.getAllTickets();
     });
   }
 
   render() {
-    console.log(this.state.allTickets);
-    const { allUsers } = this.state;
+    const { tickets } = this.state;
     return (
       <>
-        <h1>Użytkownicy</h1>
-        <Link to="tickets/add">
-          <button id="buttonAdd" className="ml-auto mt-5">
-            Dodaj
-          </button>
-        </Link>
+        <h1>Zgłoszenia</h1>
+        <button
+          id="buttonAdd"
+          className="ml-auto mt-5"
+          onClick={this.getAllTickets.bind(this)}
+        >
+          Wszystkie zgłoszenia
+        </button>
+        <button
+          id="buttonAdd"
+          className="ml-auto mt-5"
+          onClick={this.getAllWaitingTickets.bind(this)}
+        >
+          Aktywne zgłoszenia
+        </button>
         {this.state.message && (
           <div className="alert alert-danger" role="alert">
             {this.state.message}
@@ -60,41 +86,59 @@ class Tickets extends Component {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>LOGIN</th>
-                <th>IMIĘ</th>
-                <th>NAZWISKO</th>
-                <th>ROLA</th>
-                <th>AKCJE</th>
+                <th>ZASÓB</th>
+                <th>LOKALIZACJA</th>
+                <th>OPIS USTERKI</th>
+                <th>ID ZGŁASZAJĄCEGO</th>
+                <th>CZAS ZGŁOSZENIA</th>
+                <th>STATUS NAPRAWY</th>
+                <th>DZIAŁANIA</th>
               </tr>
             </thead>
             <tbody>
-              {allUsers &&
-                allUsers.map((user) => {
+              {tickets &&
+                tickets.map((ticket) => {
                   return (
-                    <tr key={user.id}>
-                      <td>{user.id}</td>
-                      <td>{user.login}</td>
-                      <td>{user.name}</td>
-                      <td>{user.surname}</td>
-                      <td>
-                        {user.role === 2
-                          ? "Administrator"
-                          : user.role === 0
-                          ? "Technik"
-                          : "Serwisant"}
-                      </td>
+                    <tr key={ticket.id}>
+                      <td>{ticket.id} </td>
+                      <td>{ticket.resource.specification}</td>
+                      <td>{ticket.resource.localizationId}</td>
+                      <td>{ticket.failureDescription}</td>
+                      <td>{ticket.reporterId}</td>
+                      <td>{ticket.dateOfReporting}</td>
+                      <td>{ticket.repairStatus}</td>
                       <td className="operation">
+                        {ticket.repairStatus === 0 ? (
+                          <>
+                            <button
+                              id="buttonEdit"
+                              onClick={this.changeTicketStatus.bind(
+                                this,
+                                1,
+                                ticket.id
+                              )}
+                            >
+                              Zakończ zgłoszenie
+                            </button>
+                            <br />
+                            <button
+                              id="buttonMid"
+                              onClick={this.changeTicketStatus.bind(
+                                this,
+                                2,
+                                ticket.id
+                              )}
+                            >
+                              Zezłomuj zasób
+                            </button>
+                            <br />
+                          </>
+                        ) : null}
                         <button
-                          onClick={this.deleteUser.bind(this, user.id)}
+                          onClick={this.deleteTicket.bind(this, ticket.id)}
                           id="buttonScrap"
                         >
-                          Usuń
-                        </button>
-                        <button
-                          id="buttonEdit"
-                          onClick={this.editUser.bind(this, user)}
-                        >
-                          Edytuj
+                          Usuń zgłoszenie
                         </button>
                       </td>
                     </tr>

@@ -18,8 +18,13 @@ class API {
       headers: authHeader(),
     });
   }
-  updateTicketStatus(id, ticket) {
-    return axios.put(API_URL + "failures/update-status/" + id, ticket, {
+  updateTicketStatus(id, ticketstat) {
+    return axios.put(API_URL + "failures/update-status/" + id, ticketstat, {
+      headers: authHeader(),
+    });
+  }
+  deleteTicket(id) {
+    return axios.delete(API_URL + "failures/delete/" + id, {
       headers: authHeader(),
     });
   }

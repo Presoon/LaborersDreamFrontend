@@ -50,7 +50,7 @@ class NewTicket extends React.Component {
     const ticket = {
       FailureDescription: this.state.failureDescription,
       ResourceId: parseInt(this.state.resourceId),
-      ReporterId: this.state.reporterId,
+      ReporterId: parseInt(this.state.reporterId),
     };
 
     if (this.checkBtn.context._errors.length === 0) {

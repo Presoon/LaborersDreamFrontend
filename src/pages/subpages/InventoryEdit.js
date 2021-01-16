@@ -3,6 +3,7 @@ import API from "../../services/APIcontext";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import required from "../../components/required";
+import CheckButton from "react-validation/build/button";
 
 class InventoryEdit extends Component {
   constructor(props) {
@@ -169,7 +170,8 @@ class InventoryEdit extends Component {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">
-                    Edytowanie sprzętu o numerze seryjnym {resource.seriesNumber}
+                    Edytowanie sprzętu o numerze seryjnym{" "}
+                    {resource.seriesNumber}
                   </h5>
                   <button
                     type="button"

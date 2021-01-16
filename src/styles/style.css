@@ -90,6 +90,16 @@ body {
   cursor: pointer;
   background-color: #f44336;
 }
+#buttonMid {
+  margin: 5px;
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 8px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ee9e1d;
+}
 
 #buttonEdit {
   margin: 5px;
