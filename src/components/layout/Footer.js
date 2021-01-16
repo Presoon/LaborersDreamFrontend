@@ -8,7 +8,7 @@ class Footer extends Component {
           <div className="container my-auto">
             <div className="text-center my-auto copyright">
               <span>
-                Copyright © Laborer's Dream | 2020 <br />
+                Copyright © Laborer's Dream | 2020-2021 <br />
                 K.Szpak & P. Magdziarz & A. Dzierżawa & A. Giza
               </span>
             </div>
