@@ -1,72 +1,110 @@
-import React from "react";
+import React, { Component } from "react";
+import API from "../../services/APIcontext";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import required from "../../components/required";
-import API from "../../services/APIcontext";
-import AuthService from "../../services/auth.service";
-import { Link } from "react-router-dom";
 
-class InventoryEdit extends React.Component {
+class InventoryEdit extends Component {
   constructor(props) {
     super(props);
 
-    this.handleNewResource = this.handleNewResource.bind(this);
+    this.handleEditResource = this.handleEditResource.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeSeriesNumber = this.onChangeSeriesNumber.bind(this);
     this.onChangeInstalationKey = this.onChangeInstalationKey.bind(this);
     this.onChangeDateOfPurchase = this.onChangeDateOfPurchase.bind(this);
     this.onChangeLocalization = this.onChangeLocalization.bind(this);
     this.onChangeType = this.onChangeType.bind(this);
-
-    const user = AuthService.getCurrentUser();
+    this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      name: null,
-      seriesNumber: null,
-      instalationKey: null,
-      dateOfPurchase: null,
-      localization: null,
-      userId: user.id,
-      type: null,
-
       loading: false,
       message: null,
+      visible: false,
+      resource: {
+        id: null,
+        specification: null,
+        seriesNumber: null,
+        instalationKey: null,
+        dateOfPurchase: null,
+        localization: null,
+        type: null,
+      },
     };
   }
 
+  componentDidUpdate() {
+    if (this.state.visible === this.props.visible) return;
+    if (this.state.resource.id === this.props.resource.id) return;
+    this.setState({
+      visible: this.props.visible,
+      resource: {
+        id: this.props.resource.id,
+        specification: this.props.resource.specification,
+        seriesNumber: this.props.resource.seriesNumber,
+        instalationKey: this.props.resource.instalationKey,
+        dateOfPurchase: this.props.resource.dateOfPurchase,
+        localization: this.props.resource.localization,
+        type: this.props.resource.type,
+      },
+    });
+  }
+
+  handleClose() {
+    this.setState({
+      visible: false,
+    });
+  }
   onChangeName(e) {
     this.setState({
-      name: e.target.value,
+      resource: {
+        ...this.state.resource,
+        specification: e.target.value,
+      },
     });
   }
   onChangeSeriesNumber(e) {
     this.setState({
-      seriesNumber: e.target.value,
+      resource: {
+        ...this.state.resource,
+        seriesNumber: e.target.value,
+      },
     });
   }
   onChangeInstalationKey(e) {
     this.setState({
-      instalationKey: e.target.value,
+      resource: {
+        ...this.state.resource,
+        instalationKey: e.target.value,
+      },
     });
   }
-
   onChangeDateOfPurchase(e) {
     this.setState({
-      dateOfPurchase: e.target.value,
+      resource: {
+        ...this.state.resource,
+        dateOfPurchase: e.target.value,
+      },
     });
   }
   onChangeLocalization(e) {
     this.setState({
-      localization: e.target.value,
+      resource: {
+        ...this.state.resource,
+        localization: e.target.value,
+      },
     });
   }
   onChangeType(e) {
     this.setState({
-      type: e.target.value,
+      resource: {
+        ...this.state.resource,
+        type: e.target.value,
+      },
     });
   }
 
-  async handleNewResource(e) {
+  async handleEditResource(e) {
     e.preventDefault();
 
     this.setState({
@@ -77,15 +115,16 @@ class InventoryEdit extends React.Component {
     this.form.validateAll();
 
     const resource = {
-      Specification: this.state.name,
-      InstalationKey: this.state.instalationKey,
-      DateOfPurchase: this.state.dateOfPurchase,
-      LocalizationId: parseInt(this.state.localization),
-      Type: parseInt(this.state.type),
+      Specification: this.state.resource.specification,
+      SeriesNumber: this.state.resource.seriesNumber,
+      InstalationKey: this.state.resource.instalationKey,
+      DateOfPurchase: this.state.resource.dateOfPurchase,
+      LocalizationId: parseInt(this.state.resource.localization),
+      Type: parseInt(this.state.resource.type),
     };
 
     if (this.checkBtn.context._errors.length === 0) {
-      await API.addNewResource(resource).then(
+      await API.updateResource(this.state.resource.id, resource).then(
         () => {
           this.setState({
             loading: false,
@@ -111,145 +150,148 @@ class InventoryEdit extends React.Component {
         loading: false,
       });
     }
+    this.props.reloadResources();
   }
 
   render() {
+    const { visible, resource } = this.state;
+    console.log(resource.name);
     return (
       <>
-        <h1>Edycja sprzętu</h1>
-        <Link to="/inventory">
-          <button id="buttonAdd" className="ml-auto mt-5">
-            Wróć
-          </button>
-        </Link>
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col-sm-6 p-4">
-              <Form
-                className="user"
-                onSubmit={this.handleNewResource}
-                ref={(c) => {
-                  this.form = c;
-                }}
-              >
-                <div className="form-group">
-                  <label>Nazwa sprzętu</label>
-                  <Input
-                    type="text"
-                    className="form-control form-control-user"
-                    name="name"
-                    placeholder="Podaj nazwę sprzętu..."
-                    value={this.state.name}
-                    onChange={this.onChangeName}
-                    validations={[required]}
-                  />
-                </div>
-                {/*
-                <div className="form-group">
-                  <label>Numer seryjny</label>
-                  <Input
-                    type="text"
-                    className="form-control form-control-user"
-                    name="seriesNumber"
-                    placeholder="Podaj numer seryjny..."
-                    value={this.state.seriesNumber}
-                    onChange={this.onChangeSeriesNumber}
-                    validations={[required]}
-                  />
-                </div>
-                */}
-                <div className="form-group">
-                  <label>Klucz instalacji</label>
-                  <Input
-                    type="text"
-                    className="form-control form-control-user"
-                    name="instalationKey"
-                    placeholder="Podaj klucz instalacji..."
-                    value={this.state.instalationKey}
-                    onChange={this.onChangeInstalationKey}
-                    validations={[required]}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Data zakupu</label>
-                  <Input
-                    type="datetime-local"
-                    className="form-control form-control-user"
-                    name="dateOfPurchase"
-                    //placeholder="Podaj datę zakupu..."
-                    value={this.state.dateOfPurchase}
-                    onChange={this.onChangeDateOfPurchase}
-                    validations={[required]}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Lokalizacja</label>
-                  <Input
-                    type="text"
-                    className="form-control form-control-user"
-                    name="localization"
-                    placeholder="Podaj Lokalizację..."
-                    value={this.state.localization}
-                    onChange={this.onChangeLocalization}
-                    validations={[required]}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Typ</label>
-                  <Input
-                    type="text"
-                    className="form-control form-control-user"
-                    name="type"
-                    placeholder="Podaj typ..."
-                    value={this.state.type}
-                    onChange={this.onChangeType}
-                    validations={[required]}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Identyfikator dodającego</label>
-                  <Input
-                    type="number"
-                    disabled
-                    className="form-control form-control-user"
-                    name="userId"
-                    placeholder="...oraz swój identyfikator"
-                    value={this.state.userId}
-                    validations={[required]}
-                  />
-                </div>
-
-                {/* <div className="form-group">
-                  <label> </label>
+        <div
+          className="modal"
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: visible ? "block" : "none" }}
+        >
+          {resource && (
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">
+                    Edytowanie sprzętu o numerze seryjnym {resource.seriesNumber}
+                  </h5>
                   <button
-                    className="btn btn-primary btn-block text-white btn-user"
-                    disabled={this.state.loading}
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    onClick={this.handleClose}
                   >
-                    {this.state.loading && (
-                      <span className="spinner-border spinner-border-sm"></span>
-                    )}
-                    <span>Edytuj sprzęt</span>
+                    <span aria-hidden="true">&times;</span>
                   </button>
-                </div> */}
-                {this.state.message && (
-                  <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
-                      {this.state.message}
+                </div>
+                <div className="modal-body">
+                  <Form
+                    className="resource"
+                    onSubmit={this.handleEditResource}
+                    ref={(c) => {
+                      this.form = c;
+                    }}
+                  >
+                    <div className="form-group">
+                      <label>Nazwa</label>
+                      <Input
+                        type="text"
+                        className="form-control form-control-user"
+                        name="nazwa"
+                        placeholder="Nazwa"
+                        value={resource.specification}
+                        onChange={this.onChangeName}
+                        validations={[required]}
+                      />
                     </div>
-                  </div>
-                )}
-                {/* <CheckButton
-                  style={{ display: "none" }}
-                  ref={(c) => {
-                    this.checkBtn = c;
-                  }}
-                /> */}
-
-                <hr />
-              </Form>
+                    <div className="form-group">
+                      <label>Klucz instalacji</label>
+                      <Input
+                        type="text"
+                        className="form-control form-control-user"
+                        name="instalationkey"
+                        placeholder="Klucz instalacji"
+                        value={resource.instalationKey}
+                        onChange={this.onChangeInstalationKey}
+                        validations={[required]}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Numer seryjny</label>
+                      <Input
+                        type="text"
+                        disabled
+                        className="form-control form-control-user"
+                        name="instalationkey"
+                        placeholder="Klucz instalacji"
+                        value={resource.seriesNumber}
+                        onChange={this.onChangeInstalationKey}
+                        validations={[required]}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Data zakupu</label>
+                      <Input
+                        type="datetime-local"
+                        className="form-control form-control-user"
+                        name="dateofpurchase"
+                        placeholder="Data"
+                        value={resource.dateOfPurchase}
+                        onChange={this.onChangeDateOfPurchase}
+                        validations={[required]}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Lokalizacja</label>
+                      <Input
+                        type="text"
+                        className="form-control form-control-user"
+                        name="localization"
+                        placeholder="Lokalizacja"
+                        value={resource.localization}
+                        onChange={this.onChangeLocalization}
+                        validations={[required]}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Typ</label>
+                      <Input
+                        type="text"
+                        className="form-control"
+                        name="type"
+                        placeholder="Typ"
+                        value={resource.type}
+                        onChange={this.onChangeType}
+                        validations={[required]}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <button
+                        className="btn btn-primary btn-block text-white btn-user"
+                        disabled={this.state.loading}
+                      >
+                        {this.state.loading && (
+                          <span className="spinner-border spinner-border-sm"></span>
+                        )}
+                        <span>Zapisz zmiany</span>
+                      </button>
+                    </div>
+                    {this.state.message && (
+                      <div className="form-group">
+                        <div className="alert alert-danger" role="alert">
+                          {this.state.message}
+                        </div>
+                      </div>
+                    )}
+                    <CheckButton
+                      style={{ display: "none" }}
+                      ref={(c) => {
+                        this.checkBtn = c;
+                      }}
+                    />
+                    <hr />
+                  </Form>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </>
     );
