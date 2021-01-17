@@ -156,7 +156,6 @@ class InventoryEdit extends Component {
 
   render() {
     const { visible, resource } = this.state;
-    console.log(resource.name);
     return (
       <>
         <div

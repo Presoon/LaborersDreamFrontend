@@ -2,6 +2,7 @@ import React from "react";
 import API from "../services/APIcontext";
 import { Link } from "react-router-dom";
 import InventoryEdit from "./subpages/InventoryEdit";
+import { format } from "date-fns";
 
 class Resources extends React.Component {
   constructor(props) {
@@ -45,7 +46,6 @@ class Resources extends React.Component {
 
   render() {
     const { allResources, editVisibility, editResource } = this.state;
-    console.log(allResources, editVisibility);
     return (
       <>
         <h1 id="title">Inwentarz</h1>
@@ -57,7 +57,7 @@ class Resources extends React.Component {
         <Link to="/inventory/add">
           <button id="buttonAdd" className="ml-auto mt-5">
             Dodaj
-         </button>
+          </button>
         </Link>
         {this.state.message && (
           <div className="alert alert-danger" role="alert">
@@ -91,11 +91,26 @@ class Resources extends React.Component {
                       <td>{resource.specification}</td>
                       <td>{resource.seriesNumber}</td>
                       <td>{resource.instalationKey}</td>
-                      <td>{resource.dateOfPurchase}</td>
+                      <td>
+                        {format(
+                          new Date(resource.dateOfPurchase),
+                          "dd/MM/yyyy kk:mm"
+                        )}
+                      </td>
                       <td>{resource.localization}</td>
                       <td className="operation">
-                        <button id="buttonScrap" onClick={this.deleteResource.bind(this, resource.id)}>Usuń</button>
-                        <button id="buttonEdit" onClick={this.editResource.bind(this, resource)}>Edytuj</button>
+                        <button
+                          id="buttonScrap"
+                          onClick={this.deleteResource.bind(this, resource.id)}
+                        >
+                          Usuń
+                        </button>
+                        <button
+                          id="buttonEdit"
+                          onClick={this.editResource.bind(this, resource)}
+                        >
+                          Edytuj
+                        </button>
                       </td>
                     </tr>
                   );
@@ -109,7 +124,6 @@ class Resources extends React.Component {
 }
 
 export default Resources;
-
 
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";

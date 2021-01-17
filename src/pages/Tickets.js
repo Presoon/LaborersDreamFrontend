@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../services/APIcontext";
+import { format } from "date-fns";
 
 class Tickets extends Component {
   constructor(props) {
@@ -42,7 +43,6 @@ class Tickets extends Component {
 
   async componentDidMount() {
     this.getAllTickets();
-    console.log(this.state.tickets);
   }
 
   async deleteTicket(idTicket) {
@@ -105,7 +105,12 @@ class Tickets extends Component {
                       <td>{ticket.resource.localizationId}</td>
                       <td>{ticket.failureDescription}</td>
                       <td>{ticket.reporterId}</td>
-                      <td>{ticket.dateOfReporting}</td>
+                      <td>
+                        {format(
+                          new Date(ticket.dateOfReporting),
+                          "dd/MM/yyyy kk:mm"
+                        )}
+                      </td>
                       <td>{ticket.repairStatus}</td>
                       <td className="operation">
                         {ticket.repairStatus === 0 ? (
