@@ -111,7 +111,28 @@ class Tickets extends Component {
                           "dd/MM/yyyy kk:mm"
                         )}
                       </td>
-                      <td>{ticket.repairStatus}</td>
+                      <td>
+                        {ticket.repairStatus === 0 ? (
+                          <>
+                            <span className="blink_me text-danger font-weight-bold">
+                              Oczekujące
+                            </span>
+                          </>
+                        ) : ticket.repairStatus === 2 ? (
+                          <>
+                            <span className="text-warning font-weight-bold">
+                              Do zezłomowania
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="text-success font-weight-bold">
+                              Zakończone
+                            </span>
+                          </>
+                        )}
+                      </td>
+
                       <td className="operation">
                         {ticket.repairStatus === 0 ? (
                           <>
