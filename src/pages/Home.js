@@ -10,6 +10,8 @@ class Home extends React.Component {
     };
   }
 
+  user = authService.getCurrentUser();
+
   componentDidMount() {
     this.intervalID = setInterval(() => this.tick(), 1000);
   }
@@ -36,7 +38,77 @@ class Home extends React.Component {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-sm-12 col-lg-4  text-center mt-4">
+            {this.user.role === 0 ? ( //lab technik
+            <>
+              <div className="col-md-6 col-sm-12 col-lg-4  text-center mt-4">
+                <NavLink
+                  className="nav-link d-flex flex-column border border-primary rounded"
+                  to="/newticket"
+                >
+                  <i className="fas fa-bug fa-6x" />
+                  <span className="mt-3 display-4">Utwórz zgłoszenie</span>
+                </NavLink>
+              </div>
+              <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4">
+              <NavLink
+                className="nav-link d-flex flex-column border border-primary rounded"
+                to="/check"
+              >
+                <i className="fas fa-question-circle fa-6x" />
+                <span className="mt-3 display-4">Sprawdź sprzęt</span>
+              </NavLink>
+            </div>
+            <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4">
+              <NavLink
+                className="nav-link d-flex flex-column border border-primary rounded"
+                to="/login"
+                onClick={() => {
+                  authService.logout();
+                  window.location.reload();
+                }}
+              >
+                <i className="fas fa-user-circle fa-6x" />
+                <span className="mt-3 display-4">Wyloguj</span>
+              </NavLink>
+            </div>
+            </>
+              ) : this.user.role === 1 ? ( //serwis
+            <>
+            <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4">
+              <NavLink
+                className="nav-link d-flex flex-column border border-primary rounded"
+                to="/tickets"
+              >
+                <i className="fas fa-book fa-6x" />
+                <span className="mt-3 display-4">System zgłoszeń</span>
+              </NavLink>
+            </div>
+            <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4">
+              <NavLink
+                className="nav-link d-flex flex-column border border-primary rounded"
+                to="/check"
+              >
+                <i className="fas fa-question-circle fa-6x" />
+                <span className="mt-3 display-4">Sprawdź sprzęt</span>
+              </NavLink>
+            </div>
+            <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4">
+              <NavLink
+                className="nav-link d-flex flex-column border border-primary rounded"
+                to="/login"
+                onClick={() => {
+                  authService.logout();
+                  window.location.reload();
+                }}
+              >
+                <i className="fas fa-user-circle fa-6x" />
+                <span className="mt-3 display-4">Wyloguj</span>
+              </NavLink>
+            </div>
+            </>
+              ) : (
+                <>
+                <div className="col-md-6 col-sm-12 col-lg-4  text-center mt-4">
               <NavLink
                 className="nav-link d-flex flex-column border border-primary rounded"
                 to="/newticket"
@@ -103,6 +175,9 @@ class Home extends React.Component {
                 <span className="mt-3 display-4">Wyloguj</span>
               </NavLink>
             </div>
+                </>
+              )}
+            
             <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4"></div>
             <div className="col-md-6 col-sm-12 col-lg-4 text-center mt-4"></div>
           </div>
