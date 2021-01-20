@@ -160,16 +160,6 @@ class Login extends Component {
                           />
                           <hr />
                         </Form>
-                        <div className="text-center">
-                          <a className="small" href="forgot-password.html">
-                            Zapomniałeś hasła?
-                          </a>
-                        </div>
-                        <div className="text-center">
-                          <a className="small" href="register.html">
-                            Stwórz konto!
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>

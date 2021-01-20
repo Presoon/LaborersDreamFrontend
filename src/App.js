@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AppContext } from "./AppContext.js";
 import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
 import AuthService from "./services/auth.service";
@@ -34,20 +33,17 @@ class App extends Component {
 
   render = () => {
     var user = AuthService.getCurrentUser();
-    const { Provider } = AppContext;
     return (
       <>
-        <Provider value={this.state}>
-          <Router>
-            <Switch>
-              {user ? (
-                <Route to="/" component={MainLayout} />
-              ) : (
-                <Route to="/" exact component={Login} />
-              )}
-            </Switch>
-          </Router>
-        </Provider>
+        <Router>
+          <Switch>
+            {user ? (
+              <Route to="/" component={MainLayout} />
+            ) : (
+              <Route to="/" exact component={Login} />
+            )}
+          </Switch>
+        </Router>
       </>
     );
   };
