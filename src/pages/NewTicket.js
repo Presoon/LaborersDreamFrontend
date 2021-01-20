@@ -85,7 +85,7 @@ class NewTicket extends React.Component {
   render() {
     return (
       <>
-        <h1>NewTicket Page</h1>
+        <h1>Utwórz zgłoszenie</h1>
         <div className="container mt-5">
           <div className="row">
             <div className="col-sm-6 p-4">

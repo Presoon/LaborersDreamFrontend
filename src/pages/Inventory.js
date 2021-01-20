@@ -79,6 +79,7 @@ class Resources extends React.Component {
                 <th>KLUCZ INSTALACJI</th>
                 <th>DATA ZAKUPU</th>
                 <th>LOKALIZACJA</th>
+                <th>TYP</th>
                 <th>DZIAŁANIE</th>
               </tr>
             </thead>
@@ -98,6 +99,7 @@ class Resources extends React.Component {
                         )}
                       </td>
                       <td>{resource.localization}</td>
+                      <td>{resource.type === 1 ? "Software" : "Hardware"}</td>
                       <td className="operation">
                         <button
                           id="buttonScrap"

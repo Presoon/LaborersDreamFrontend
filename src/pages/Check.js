@@ -63,7 +63,7 @@ class Check extends React.Component {
     const { displayinfo } = this.state;
     return (
       <>
-        <h1>Check Page</h1>
+        <h1>Sprawdzanie sprzętu</h1>
         <div className="container mt-5">
           <div className="row">
             <div className="col-sm-6 p-4">

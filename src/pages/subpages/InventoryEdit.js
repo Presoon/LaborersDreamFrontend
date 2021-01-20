@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../services/APIcontext";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import Select from "react-validation/build/select";
 import required from "../../components/required";
 import CheckButton from "react-validation/build/button";
 
@@ -29,7 +30,7 @@ class InventoryEdit extends Component {
         instalationKey: null,
         dateOfPurchase: null,
         localization: null,
-        type: null,
+        type: "Hardware",
       },
     };
   }
@@ -46,7 +47,7 @@ class InventoryEdit extends Component {
         instalationKey: this.props.resource.instalationKey,
         dateOfPurchase: this.props.resource.dateOfPurchase,
         localization: this.props.resource.localization,
-        type: this.props.resource.type,
+        type: this.props.resource.type === 0 ? "Hardware" : "Software",
       },
     });
   }
@@ -121,7 +122,7 @@ class InventoryEdit extends Component {
       InstalationKey: this.state.resource.instalationKey,
       DateOfPurchase: this.state.resource.dateOfPurchase,
       LocalizationId: parseInt(this.state.resource.localization),
-      Type: parseInt(this.state.resource.type),
+      Type: this.state.resource.type === "Hardware" ? 0 : 1,
     };
 
     if (this.checkBtn.context._errors.length === 0) {
@@ -253,7 +254,7 @@ class InventoryEdit extends Component {
                     </div>
                     <div className="form-group">
                       <label>Typ</label>
-                      <Input
+                      <Select
                         type="text"
                         className="form-control"
                         name="type"
@@ -261,7 +262,10 @@ class InventoryEdit extends Component {
                         value={resource.type}
                         onChange={this.onChangeType}
                         validations={[required]}
-                      />
+                      >
+                        <option>Hardware</option>
+                        <option>Software</option>
+                      </Select>
                     </div>
                     <div className="form-group">
                       <button

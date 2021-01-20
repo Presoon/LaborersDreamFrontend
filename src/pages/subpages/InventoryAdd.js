@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import required from "../../components/required";
+import Select from "react-validation/build/select";
 import API from "../../services/APIcontext";
 import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ class InventoryAdd extends React.Component {
       dateOfPurchase: null,
       localization: null,
       userId: user.id,
-      type: null,
+      type: "Hardware",
 
       loading: false,
       message: null,
@@ -82,7 +83,7 @@ class InventoryAdd extends React.Component {
       InstalationKey: this.state.instalationKey,
       DateOfPurchase: this.state.dateOfPurchase,
       LocalizationId: parseInt(this.state.localization),
-      Type: parseInt(this.state.type),
+      Type: this.state.type === "Hardware" ? 0 : 1,
     };
 
     if (this.checkBtn.context._errors.length === 0) {
@@ -139,7 +140,7 @@ class InventoryAdd extends React.Component {
                     type="text"
                     className="form-control form-control-user"
                     name="name"
-                    placeholder="Podaj nazwę sprzętu..."
+                    placeholder="Podaj nazwę sprzętu"
                     value={this.state.name}
                     onChange={this.onChangeName}
                     validations={[required]}
@@ -165,7 +166,7 @@ class InventoryAdd extends React.Component {
                     type="text"
                     className="form-control form-control-user"
                     name="instalationKey"
-                    placeholder="Podaj klucz instalacji..."
+                    placeholder="Podaj klucz instalacji"
                     value={this.state.instalationKey}
                     onChange={this.onChangeInstalationKey}
                     validations={[required]}
@@ -189,7 +190,7 @@ class InventoryAdd extends React.Component {
                     type="text"
                     className="form-control form-control-user"
                     name="localization"
-                    placeholder="Podaj Lokalizację..."
+                    placeholder="Podaj id lokalizacji"
                     value={this.state.localization}
                     onChange={this.onChangeLocalization}
                     validations={[required]}
@@ -197,15 +198,18 @@ class InventoryAdd extends React.Component {
                 </div>
                 <div className="form-group">
                   <label>Typ</label>
-                  <Input
+                  <Select
                     type="text"
-                    className="form-control form-control-user"
+                    className="form-control"
                     name="type"
-                    placeholder="Podaj typ..."
+                    placeholder="Podaj typ"
                     value={this.state.type}
                     onChange={this.onChangeType}
-                    validations={[required]}
-                  />
+                    //validations={[required]}
+                    >
+                    <option>Hardware</option>
+                    <option>Software</option>
+                  </Select>
                 </div>
 
                 <div className="form-group">
