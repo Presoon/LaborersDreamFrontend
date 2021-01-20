@@ -1,11 +1,8 @@
 import React, { PureComponent } from "react";
-import { AppContext } from "../../AppContext";
 import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 
 class Navtop extends PureComponent {
-  static contextType = AppContext;
-
   render() {
     const user = AuthService.getCurrentUser();
     return (
@@ -34,11 +31,13 @@ class Navtop extends PureComponent {
                         ""
                       )}
                     </span>
-                    {user.role === 2 ? 
-                    (<i className="fas fa-user-cog fa-2x text-gray-600"/>) 
-                    : (user.role === 1 ? 
-                    (<i className="fas fa-tools fa-2x text-gray-600"/>)
-                    :(<i className="fas fa-flask fa-2x text-gray-600"/>))}
+                    {user.role === 2 ? (
+                      <i className="fas fa-user-cog fa-2x text-gray-600" />
+                    ) : user.role === 1 ? (
+                      <i className="fas fa-tools fa-2x text-gray-600" />
+                    ) : (
+                      <i className="fas fa-flask fa-2x text-gray-600" />
+                    )}
                   </a>
                   <div
                     className="dropdown-menu shadow dropdown-menu-right animated--grow-in"
