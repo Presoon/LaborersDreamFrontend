@@ -244,10 +244,11 @@ class InventoryEdit extends Component {
                     <div className="form-group">
                       <label>Lokalizacja</label>
                       <Input
-                        type="text"
+                        type="number"
                         className="form-control form-control-user"
                         name="localization"
                         placeholder="Lokalizacja"
+                        min="0"
                         value={resource.localization}
                         onChange={this.onChangeLocalization}
                         validations={[required]}

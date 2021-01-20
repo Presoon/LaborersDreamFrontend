@@ -116,6 +116,7 @@ class NewTicket extends React.Component {
                     className="form-control form-control-user"
                     name="resourceId"
                     placeholder="identyfikator urządzenia"
+                    min="0"
                     value={this.state.resourceId}
                     onChange={this.onChangeResId}
                     validations={[required]}

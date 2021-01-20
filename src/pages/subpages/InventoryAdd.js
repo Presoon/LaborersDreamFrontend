@@ -187,10 +187,11 @@ class InventoryAdd extends React.Component {
                 <div className="form-group">
                   <label>Lokalizacja</label>
                   <Input
-                    type="text"
+                    type="number"
                     className="form-control form-control-user"
                     name="localization"
                     placeholder="Podaj id lokalizacji"
+                    min="0"
                     value={this.state.localization}
                     onChange={this.onChangeLocalization}
                     validations={[required]}
