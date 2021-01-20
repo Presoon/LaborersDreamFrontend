@@ -44,23 +44,50 @@ class Navbar extends Component {
                   <span>Strona główna</span>
                 </NavLink>
               </li>
-              <li className="nav-item" role="presentation">
-                <NavLink className="nav-link" to="/newticket">
-                  <i className="fas fa-bug" style={{ minWidth: 20 }} />
-                  <span>Utwórz zgłoszenie</span>
-                </NavLink>
-              </li>
-              <li className="nav-item" role="presentation">
-                <NavLink className="nav-link" to="/check">
-                  <i
-                    className="fas fa-question-circle"
-                    style={{ minWidth: 20 }}
-                  />
-                  <span>Sprawdź sprzęt</span>
-                </NavLink>
-              </li>
-              {this.user.role === 2 ? (
+              {this.user.role === 0 ? ( //lab technik
                 <>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/newticket">
+                      <i className="fas fa-bug" style={{ minWidth: 20 }} />
+                      <span>Utwórz zgłoszenie</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/check">
+                      <i
+                        className="fas fa-question-circle"
+                        style={{ minWidth: 20 }}
+                      />
+                      <span>Sprawdź sprzęt</span>
+                    </NavLink>
+                  </li>
+                </>
+              ) : this.user.role === 1 ? ( //serwis
+                  <>
+                    <li className="nav-item" role="presentation">
+                      <NavLink className="nav-link" to="/check">
+                        <i
+                          className="fas fa-question-circle"
+                          style={{ minWidth: 20 }}
+                        />
+                        <span>Sprawdź sprzęt</span>
+                      </NavLink>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                      <NavLink className="nav-link" to="/tickets">
+                        <i className="fas fa-book" style={{ minWidth: 20 }} />
+                        <span>System zgłoszeń</span>
+                      </NavLink>
+                    </li>
+                  </>
+              ) : ( //admin
+                <>
+                  <li className="nav-item" role="presentation">
+                    <NavLink className="nav-link" to="/newticket">
+                      <i className="fas fa-bug" style={{ minWidth: 20 }} />
+                      <span>Utwórz zgłoszenie</span>
+                    </NavLink>
+                  </li>
                   <li className="nav-item" role="presentation">
                     <NavLink className="nav-link" to="/tickets">
                       <i className="fas fa-book" style={{ minWidth: 20 }} />
@@ -74,6 +101,15 @@ class Navbar extends Component {
                     </NavLink>
                   </li>
                   <li className="nav-item" role="presentation">
+                      <NavLink className="nav-link" to="/check">
+                        <i
+                          className="fas fa-question-circle"
+                          style={{ minWidth: 20 }}
+                        />
+                        <span>Sprawdź sprzęt</span>
+                      </NavLink>
+                    </li>
+                  <li className="nav-item" role="presentation">
                     <NavLink className="nav-link" to="/users">
                       <i className="fas fa-users" style={{ minWidth: 20 }} />
                       <span>Użytkownicy</span>
@@ -86,7 +122,7 @@ class Navbar extends Component {
                     </NavLink>
                   </li>
                 </>
-              ) : null}
+              )} 
               <li className="nav-item" role="presentation">
                 <NavLink
                   className="nav-link"
