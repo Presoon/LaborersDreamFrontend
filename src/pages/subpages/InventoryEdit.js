@@ -55,6 +55,7 @@ class InventoryEdit extends Component {
   handleClose() {
     this.setState({
       visible: false,
+      message: null,
     });
   }
   onChangeName(e) {
